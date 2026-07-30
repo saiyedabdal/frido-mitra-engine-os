@@ -146,6 +146,83 @@ h2{font-family:var(--disp);font-weight:600;font-size:26px;margin-bottom:4px}
 .covergap{border:1px solid rgba(229,84,75,.35);background:rgba(229,84,75,.07);border-radius:12px;padding:12px 16px;font-size:13.5px;margin-bottom:16px}
 .coverok{border:1px solid rgba(52,195,136,.3);background:rgba(52,195,136,.06);border-radius:12px;padding:12px 16px;font-size:13.5px;margin-bottom:16px;color:var(--jade)}
 
+/* accordions — affiliate channels */
+.acc{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.acc-head{display:flex;align-items:center;gap:10px;padding-right:12px;background:var(--panel2)}
+.acc-head .hmain{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:13px 0 13px 16px;text-align:left}
+.chev{font-size:11px;color:var(--faint);transition:transform .15s ease;flex:none}
+.acc.open>.acc-head .chev{transform:rotate(90deg)}
+.acc-head .code{font-family:var(--mono);font-size:12px;color:var(--saffron);flex:none}
+.acc-head .code.g{color:var(--sky)}
+.acc-head .anm{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acc-head .astat{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap;flex:none}
+.acc-body{display:none;border-top:1px solid var(--line)}
+.acc.open>.acc-body{display:block}
+.sacblock{margin:10px 0 12px 26px;border-left:2px solid rgba(148,163,184,.18)}
+.sac{background:transparent;border:0;border-radius:0;margin-bottom:0}
+.sac>.acc-head{background:transparent}
+.sac>.acc-head .hmain{padding:10px 0 10px 14px}
+.sac>.acc-body{border-top:1px dashed var(--line)}
+.sengine{display:flex;gap:8px;align-items:baseline;padding:12px 16px 2px;font-size:12.5px;color:var(--muted)}
+.sengine .eid{font-family:var(--mono);font-size:11px;color:var(--saffron)}
+.tag.ac{background:rgba(240,162,49,.12);color:var(--saffron)}
+.tag.sac{background:rgba(148,163,184,.12);color:var(--muted)}
+.tag.custom{background:rgba(139,148,167,.15);color:var(--muted)}
+.delx{color:var(--faint);font-size:15px;line-height:1;padding:4px 8px;border-radius:6px;flex:none}
+.delx:hover{color:var(--ember);background:rgba(229,84,75,.12)}
+.addbtn{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);border:1px dashed var(--line);border-radius:10px;padding:8px 14px}
+.addbtn:hover{color:var(--text);border-color:var(--saffron)}
+.addbtn.sm{font-size:12px;padding:6px 12px;margin:10px 16px 14px}
+.addform{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 16px;background:rgba(148,163,184,.04);border-radius:12px;border:1px dashed var(--line);margin-bottom:16px}
+.acc .addform{border:0;border-top:1px dashed var(--line);border-radius:0;margin-bottom:0}
+.addform input{background:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;color:var(--text);font-size:13px;min-width:210px}
+.addform input.code{min-width:110px;font-family:var(--mono);text-transform:uppercase}
+.addform .go{background:var(--saffron);color:var(--ink);border-radius:8px;padding:7px 14px;font-weight:600;font-size:13px}
+.addform .err{color:var(--ember);font-size:12px}
+
+/* analytics matrix */
+.mtx td{padding:0;border-bottom:1px solid rgba(148,163,184,.07)}
+.mtx td.chcell{padding:9px 12px}
+.mtx .cellb{display:block;width:100%;padding:9px 6px;font-family:var(--mono);font-size:12px;text-align:center;color:var(--text)}
+.mtx .cellb:hover{box-shadow:inset 0 0 0 1px var(--line)}
+.mtx tfoot td{border-top:1px solid var(--line);border-bottom:0;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:9px 6px;text-align:center}
+.mtx tfoot td:first-child{text-align:left;padding-left:12px}
+
+/* engine analysis */
+.fbar{padding:12px 14px;margin-bottom:16px}
+.fbar-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.fbar-top .fl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--faint)}
+.modetog{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-left:auto}
+.modetog button{padding:5px 12px;font-size:12px;color:var(--muted)}
+.modetog button.on{background:var(--sky);color:var(--ink);font-weight:600}
+.fchips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.fchip{font-family:var(--mono);font-size:11.5px;padding:5px 10px;border-radius:7px;border:1px solid var(--line);color:var(--muted);background:var(--panel2)}
+.fchip:hover{color:var(--text)}
+.fchip.on{background:var(--saffron);color:var(--ink);border-color:var(--saffron);font-weight:500}
+.fchip.g.on{background:var(--sky);border-color:var(--sky)}
+.fchip.part{background:rgba(240,162,49,.16);color:var(--saffron);border-color:rgba(240,162,49,.5)}
+.fchip.acp{font-weight:600}
+.fdiv{width:1px;height:18px;background:var(--line);margin:0 3px;flex:none}
+.fsub{color:var(--faint);font-size:10px}
+.eng .engbody{display:none}
+.eng.open .engbody{display:block}
+.eng.open>.eh2 .chev{transform:rotate(90deg)}
+.eh2but{width:100%;text-align:left;cursor:pointer;align-items:center}
+.eh2but:hover{background:rgba(148,163,184,.08)}
+.purp{padding:12px 16px 0;font-size:12.5px;color:var(--muted)}
+.combar{display:flex;align-items:center;gap:12px;padding:12px 16px;flex-wrap:wrap}
+.subch{display:flex;align-items:center;gap:10px;padding:9px 16px;background:rgba(148,163,184,.05);border-top:1px solid var(--line);font-size:12.5px;flex-wrap:wrap}
+.subch .code{font-family:var(--mono);font-size:11px;color:var(--saffron)}
+.subch .code.g{color:var(--sky)}
+.subch .cnt{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.xall{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:4px 10px}
+.xall:hover{color:var(--text)}
+@media(max-width:720px){
+  .acc-head .astat{display:none}
+  .eh2but .ecnt{display:none}
+  .eh2but .bar{display:none}
+}
+
 /* stopper feed */
 .feed .step{grid-template-columns:1fr auto}
 footer{border-top:1px solid var(--line);margin-top:40px;padding:20px 24px;max-width:1240px;margin-left:auto;margin-right:auto;font-size:12px;color:var(--faint);display:flex;gap:18px;flex-wrap:wrap;align-items:center}
@@ -167,27 +244,26 @@ footer button:hover{color:var(--text)}
       <span class="eyebrow">FRIDO MITRA · AFFILIATE PROGRAM</span>
       <h1>Engine OS</h1>
     </div>
-    <nav id="nav" aria-label="Views">
-      <button data-v="dashboard">Dashboard</button>
-      <button data-v="registry">Registry</button>
-      <button data-v="cockpit">Cockpit</button>
-      <button data-v="lens">Lens</button>
+    <nav id="nav" aria-label="Sections">
+      <button data-v="analytics">Analytics</button>
+      <button data-v="channels">Affiliate Channels</button>
+      <button data-v="engines">Engine Analysis</button>
     </nav>
-    <span class="ver">v1.0 · seed</span>
+    <span class="ver">v1.1 · sections</span>
   </div>
 </header>
 
 <main>
-  <section class="view" id="v-dashboard"></section>
-  <section class="view" id="v-registry"></section>
-  <section class="view" id="v-cockpit"></section>
-  <section class="view" id="v-lens"></section>
+  <section class="view" id="v-analytics"></section>
+  <section class="view" id="v-channels"></section>
+  <section class="view" id="v-engines"></section>
 </main>
 
 <footer>
   <span>System of record: Google Sheet (Engine OS design §2). This build: embedded seed v1 — rows tagged <span class="tag v0">V0</span> come from the master sheet; <span class="tag draft">DRAFT</span> rows need Sprint-1 confirmation.</span>
-  <span>Status clicks are saved in this browser only.</span>
+  <span>Status clicks and added channels are saved in this browser only.</span>
   <button id="resetBtn">Reset local status edits</button>
+  <button id="resetChBtn">Remove added channels</button>
 </footer>
 
 <script>
@@ -273,41 +349,123 @@ function cycle(r){const i=STATUSES.indexOf(eff(r));overrides[rowId(r)]=STATUSES[
 /* ---------------- helpers ---------------- */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const leaves=CHANNELS.filter(c=>c.leaf);
-const realLeaves=leaves.filter(c=>!c.global);
-const chById=id=>CHANNELS.find(c=>c.id===id);
+
+/* custom channels — browser-local additions to the seed registry */
+const CHKEY="fm_channels_v1";
+let CUSTOM=[];
+try{CUSTOM=JSON.parse(localStorage.getItem(CHKEY)||"[]")}catch(e){CUSTOM=[]}
+if(!Array.isArray(CUSTOM))CUSTOM=[];
+function saveCh(){try{localStorage.setItem(CHKEY,JSON.stringify(CUSTOM))}catch(e){}}
+
+function allCh(){
+ const m=CHANNELS.concat(CUSTOM.map(c=>({...c})));
+ m.forEach(c=>{if(c.custom)c.leaf=!m.some(k=>k.parent===c.id)});
+ return m;
+}
+const chById=id=>allCh().find(c=>c.id===id);
+const childrenOf=id=>allCh().filter(c=>c.parent===id);
+const leafList=()=>allCh().filter(c=>c.leaf);
+const realLeafList=()=>leafList().filter(c=>!c.global);
+function leafUnder(id){const c=chById(id);if(!c)return[];if(c.leaf)return[c];let out=[];childrenOf(id).forEach(k=>{out=out.concat(leafUnder(k.id))});return out}
+function nDesc(id){return childrenOf(id).reduce((n,k)=>n+1+nDesc(k.id),0)}
 const rowsFor=(ch,eng)=>LEDGER.filter(r=>r.ch===ch&&(!eng||r.eng===eng)).sort((a,b)=>a.eng===b.eng?a.seq-b.seq:a.eng<b.eng?-1:1);
+function rowsMany(ids,eng){const s=new Set(ids);return LEDGER.filter(r=>s.has(r.ch)&&(!eng||r.eng===eng)).sort((a,b)=>a.ch!==b.ch?(a.ch<b.ch?-1:1):a.eng!==b.eng?(a.eng<b.eng?-1:1):a.seq-b.seq)}
 function counts(rows){const c={"Not started":0,"In build":0,"Testable":0,"Live":0};rows.forEach(r=>c[eff(r)]++);return c}
 function gtmPct(rows){if(!rows.length)return 0;const c=counts(rows);return Math.round(100*(c["Live"]*3+c["Testable"]*2+c["In build"])/(3*rows.length))}
 function stChipCls(s){return "st"+STATUSES.indexOf(s)}
 function statChip(r){const s=eff(r);const local=overrides[rowId(r)]&&overrides[rowId(r)]!==r.gtm;
  return '<button class="chip click '+stChipCls(s)+'" data-cyc="'+rowId(r)+'" title="Click to cycle status (saved locally)">'+(local?'<span class="ldot"></span>':'')+esc(s)+'</button>'}
 function srcTag(r){return '<span class="tag '+(r.src==="v0"?"v0":"draft")+'">'+(r.src==="v0"?"V0":"DRAFT")+'</span>'}
+function chTag(c){return '<span class="tag '+(c.level==="AC"?"ac":"sac")+'">'+(c.level==="AC"?"AC":"SAC")+'</span>'+(c.custom?' <span class="tag custom">ADDED</span>':'')}
+function barHTML(rows,w){const cc=counts(rows);const tot=rows.length||1;
+ return '<span class="bar"'+(w?' style="min-width:'+w+'px;max-width:'+w+'px"':'')+' title="'+STATUSES.map(s=>s+": "+cc[s]).join(" · ")+'">'
+ +'<i style="width:'+(100*cc["Live"]/tot)+'%;background:var(--jade)"></i>'
+ +'<i style="width:'+(100*cc["Testable"]/tot)+'%;background:var(--sky)"></i>'
+ +'<i style="width:'+(100*cc["In build"]/tot)+'%;background:var(--saffron)"></i></span>'}
+function statLine(rows){const cc=counts(rows);const st=rows.filter(r=>r.stop).length;
+ return rows.length+' steps · '+cc["Live"]+' live · GTM '+gtmPct(rows)+'%'+(st?' · <span style="color:var(--ember)">'+st+' stopper'+(st>1?'s':'')+'</span>':'')}
+function metaLine(r){return '<div class="meta"><span><b>Owner</b> '+esc(r.owner)+'</span>'
+ +(r.poc?'<span><b>POC tool</b> '+esc(r.poc)+'</span>':'')
+ +(r.scaled?'<span><b>Scaled tool</b> '+esc(r.scaled)+'</span>':'')
+ +(r.data?'<span><b>Data</b> '+esc(r.data)+'</span>':'')+'</div>'}
+function stopLine(r){return r.stop?'<div class="stop"><span class="sev '+r.sev+'">'+r.sev+'</span>'+esc(r.stop)+'</div>':''}
+const pad2=n=>String(n).padStart(2,"0");
 
-/* ---------------- views ---------------- */
-function vDashboard(){
+/* ---------------- ui state ---------------- */
+const openAC=new Set(),openSAC=new Set(),openENG=new Set();
+let engMode="combined";
+let engSel=null;            /* null = every leaf channel selected */
+let metric="gtm";
+let showAddAC=false,showAddSAC=null,addErr="";
+function selLeaves(){const all=leafList();return engSel===null?all:all.filter(c=>engSel.has(c.id))}
+function openChain(id){let cur=chById(id);while(cur&&cur.parent){const p=chById(cur.parent);if(p){if(p.parent)openSAC.add(p.id);else openAC.add(p.id)}cur=p}}
+function materializeSel(){if(engSel===null)engSel=new Set(leafList().map(c=>c.id))}
+function normalizeSel(){if(engSel&&engSel.size===leafList().length)engSel=null}
+function toggleLeaf(id){materializeSel();if(engSel.has(id))engSel.delete(id);else engSel.add(id);normalizeSel()}
+function toggleFam(id){materializeSel();const lu=leafUnder(id).map(x=>x.id);const allOn=lu.every(i=>engSel.has(i));lu.forEach(i=>{if(allOn)engSel.delete(i);else engSel.add(i)});normalizeSel()}
+
+/* ---------------- channel add / remove ---------------- */
+function sanitizeCode(s){return String(s||"").toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,6)}
+function autoCode(name){
+ const w=String(name).trim().split(/\s+/).filter(Boolean);
+ let base=w.length>=2?w.map(x=>x[0]).join(""):String(w[0]||"").slice(0,3);
+ return sanitizeCode(base)||"CH";
+}
+function uniqueId(id){let out=id,n=2;while(chById(out)){out=id+n;n++}return out}
+function addChannel(kind,parent){
+ const nmEl=$("#nm-"+kind),cdEl=$("#cd-"+kind);
+ const nm=(nmEl?nmEl.value:"").trim();
+ const typed=sanitizeCode(cdEl?cdEl.value:"");
+ if(!nm){addErr="Give the channel a name.";router();focusAdd(kind);return}
+ const code=typed||autoCode(nm);
+ let id=parent?parent+"-"+code:code;
+ if(typed&&chById(id)){addErr="Code "+id+" is already used — pick another.";router();focusAdd(kind);return}
+ id=uniqueId(id);
+ CUSTOM.push({id:id,parent:parent||null,level:parent?"SAC":"AC",name:nm,leaf:true,status:"New",custom:true});
+ saveCh();
+ addErr="";showAddAC=false;showAddSAC=null;
+ if(parent)openChain(id);else openAC.add(id);
+ router();
+}
+function focusAdd(kind){const el=$("#nm-"+kind);if(el)el.focus()}
+function delChannel(id){
+ const c=chById(id);if(!c||!c.custom)return;
+ const gather=x=>{let out=[x];CUSTOM.filter(k=>k.parent===x).forEach(k=>{out=out.concat(gather(k.id))});return out};
+ const doomed=new Set(gather(id));
+ if(!confirm("Remove "+id+" — "+c.name+"?"+(doomed.size>1?" Its added sub-channels go too.":"")))return;
+ CUSTOM=CUSTOM.filter(k=>!doomed.has(k.id));
+ if(engSel)doomed.forEach(d=>engSel.delete(d));
+ doomed.forEach(d=>{openAC.delete(d);openSAC.delete(d)});
+ saveCh();router();
+}
+
+/* ---------------- section 1 · analytics ---------------- */
+const METRICS={gtm:["GTM %","52,195,136"],steps:["Steps","240,162,49"],live:["Live","52,195,136"],stop:["Stoppers","229,84,75"]};
+function cellNum(rows){if(metric==="gtm")return gtmPct(rows);if(metric==="steps")return rows.length;if(metric==="live")return counts(rows)["Live"];return rows.filter(r=>r.stop).length}
+function vAnalytics(){
+ const lvs=leafList();
  const stoppers=LEDGER.filter(r=>r.stop);
- const kpi=[
-  ["Affiliate channels", realLeaves.length+" leaves"],
-  ["Sub-engines defined", LEDGER.length],
-  ["Weighted GTM", gtmPct(LEDGER)+"%"],
-  ["Open show stoppers", stoppers.length]
- ];
- let h='<h2>Portfolio dashboard</h2><p class="sub">Every affiliate channel as a 9-station engine line — the sequential flow from acquisition to retention, at a glance.</p>';
- h+='<div class="kpis">'+kpi.map(k=>'<div class="kpi"><div class="n">'+k[1]+'</div><div class="l">'+k[0]+'</div></div>').join('');
- h+='<div class="kpi mark"><div class="n">500 · 500 · 500 recruits<br>6-month POC · 3-month payback</div><div class="l">POC markers (v0)</div></div></div>';
+ const liveN=LEDGER.filter(r=>eff(r)==="Live").length;
+ let h='<h2>Analytics</h2><p class="sub">Every metric on the program, engine × affiliate — status, workload, live coverage and stoppers in one grid.</p>';
+ h+='<div class="kpis">'
+  +'<div class="kpi"><div class="n">'+realLeafList().length+'</div><div class="l">Affiliate channels (leaves)</div></div>'
+  +'<div class="kpi"><div class="n">'+LEDGER.length+'</div><div class="l">Sub-engines defined</div></div>'
+  +'<div class="kpi"><div class="n">'+gtmPct(LEDGER)+'%</div><div class="l">Weighted GTM</div></div>'
+  +'<div class="kpi"><div class="n">'+liveN+'</div><div class="l">Steps live</div></div>'
+  +'<div class="kpi"><div class="n"'+(stoppers.length?' style="color:var(--ember)"':'')+'>'+stoppers.length+'</div><div class="l">Open show stoppers</div></div>'
+  +'<div class="kpi mark"><div class="n">500 · 500 · 500 recruits<br>6-month POC · 3-month payback</div><div class="l">POC markers (v0)</div></div></div>';
  h+='<div class="sect">Engine lines · E1 → E9</div><div class="lines"><div class="linehead"><div></div>'+ENGINES.map(e=>'<div class="eh" title="'+esc(e.name)+'">'+e.id+'</div>').join('')+'</div>';
  let ai=0;
- leaves.forEach(c=>{
+ lvs.forEach(c=>{
   h+='<div class="linerow"><div class="chname"><span class="c'+(c.global?' g':'')+'">'+c.id+'</span><span class="n">'+esc(c.name)+'</span></div>';
   ENGINES.forEach(e=>{
    const rs=rowsFor(c.id,e.id);
    const gShared=!c.global&&rowsFor("GLOBAL",e.id).length>0;
-   if(!rs.length){h+='<div class="stcell"><button class="station empty anim" style="animation-delay:'+(ai++*12)+'ms" data-go="cockpit/'+c.id+'/'+e.id+'" title="'+c.id+' · '+esc(e.name)+' — no channel-specific steps'+(gShared?' (GLOBAL covers shared steps)':'')+'">·'+ (gShared?'<span class="gdot"></span>':'') +'</button></div>';return}
+   if(!rs.length){h+='<div class="stcell"><button class="station empty anim" style="animation-delay:'+(ai++*12)+'ms" data-go="engines/'+e.id+'/'+c.id+'" title="'+c.id+' · '+esc(e.name)+' — no channel-specific steps'+(gShared?' (GLOBAL covers shared steps)':'')+'">·'+(gShared?'<span class="gdot"></span>':'')+'</button></div>';return}
    const cc=counts(rs);let dom=0;let best=-1;
    STATUSES.forEach((s,i)=>{if(cc[s]>best||(cc[s]===best&&i>dom)){best=cc[s];dom=cc[s]>0?i:dom}});
    if(cc["Live"]===rs.length)dom=3;
-   h+='<div class="stcell"><button class="station s'+dom+' anim" style="animation-delay:'+(ai++*12)+'ms" data-go="cockpit/'+c.id+'/'+e.id+'" title="'+c.id+' · '+esc(e.name)+' — '+rs.length+' step(s), '+cc["Live"]+' live">'+rs.length+(cc["Live"]>0&&cc["Live"]<rs.length?'<span class="liv"></span>':'')+(gShared?'<span class="gdot"></span>':'')+'</button></div>';
+   h+='<div class="stcell"><button class="station s'+dom+' anim" style="animation-delay:'+(ai++*12)+'ms" data-go="engines/'+e.id+'/'+c.id+'" title="'+c.id+' · '+esc(e.name)+' — '+rs.length+' step(s), '+cc["Live"]+' live">'+rs.length+(cc["Live"]>0&&cc["Live"]<rs.length?'<span class="liv"></span>':'')+(gShared?'<span class="gdot"></span>':'')+'</button></div>';
   });
   h+='</div>';
  });
@@ -318,7 +476,27 @@ function vDashboard(){
   +'<span><span class="sw" style="background:var(--jade)"></span>Live</span>'
   +'<span><span class="sw" style="border:1px dashed var(--line);background:transparent"></span>No steps yet</span>'
   +'<span><span class="sw" style="background:var(--sky);width:6px;height:6px;border-radius:50%"></span>GLOBAL covers shared steps</span>'
-  +'<span>Click any station to open it in the Cockpit</span></div>';
+  +'<span>Click any station to open it in Engine Analysis</span></div>';
+ h+='<div class="sect">Engine × affiliate matrix</div>';
+ h+='<div class="selrow" role="group" aria-label="Matrix metric">'+Object.keys(METRICS).map(k=>'<button class="'+(metric===k?'on':'')+'" data-metric="'+k+'">'+METRICS[k][0]+'</button>').join('')+'</div>';
+ const col=METRICS[metric][1];
+ let maxV=1;
+ if(metric!=="gtm")lvs.forEach(c=>ENGINES.forEach(e=>{const v=cellNum(rowsFor(c.id,e.id));if(v>maxV)maxV=v}));
+ h+='<div class="panel scroll"><table class="tbl mtx"><thead><tr><th>Channel</th>'+ENGINES.map(e=>'<th style="text-align:center" title="'+esc(e.name)+'">'+e.id+'</th>').join('')+'<th style="text-align:center">All</th></tr></thead><tbody>';
+ lvs.forEach(c=>{
+  h+='<tr><td class="chcell" style="white-space:nowrap"><span class="mono" style="color:var(--'+(c.global?'sky':'saffron')+');font-size:11px">'+c.id+'</span> <span class="mut" style="font-size:12px">'+esc(c.name)+'</span></td>';
+  ENGINES.forEach(e=>{
+   const rs=rowsFor(c.id,e.id);const v=cellNum(rs);
+   const a=rs.length?(metric==="gtm"?v/100:v/maxV)*.38:0;
+   const cc=counts(rs);
+   h+='<td class="mcell"><button class="cellb" data-go="engines/'+e.id+'/'+c.id+'" style="background:rgba('+col+','+a.toFixed(3)+')" title="'+c.id+' · '+e.id+' — '+rs.length+' steps · '+cc["Live"]+' live · GTM '+gtmPct(rs)+'% · '+rs.filter(r=>r.stop).length+' stoppers">'+(rs.length?(metric==="gtm"?v+"%":v):'<span class="fnt">·</span>')+'</button></td>';
+  });
+  const all=rowsFor(c.id);const av=cellNum(all);
+  h+='<td class="mcell"><button class="cellb" data-go="engines/all/'+c.id+'" style="font-weight:600" title="'+c.id+' across all engines">'+(all.length?(metric==="gtm"?av+"%":av):'<span class="fnt">·</span>')+'</button></td></tr>';
+ });
+ const allIds=lvs.map(c=>c.id);
+ const grand=rowsMany(allIds);
+ h+='</tbody><tfoot><tr><td>All channels</td>'+ENGINES.map(e=>{const rs=rowsMany(allIds,e.id);const v=cellNum(rs);return '<td>'+(rs.length?(metric==="gtm"?v+"%":v):"·")+'</td>'}).join('')+'<td style="font-weight:600">'+(metric==="gtm"?cellNum(grand)+"%":cellNum(grand))+'</td></tr></tfoot></table></div>';
  h+='<div class="sect">Show stopper feed</div><div class="panel feed">';
  if(!stoppers.length)h+='<div class="gap">No stoppers logged.</div>';
  const order={Blocker:0,Risk:1,Watch:2};
@@ -326,123 +504,183 @@ function vDashboard(){
   h+='<div class="step"><div><div class="nm">'+esc(r.stop)+'</div><div class="meta"><span class="mono fnt">'+rowId(r)+'</span><span>'+esc(r.name)+'</span></div></div><div class="right"><span class="sev '+r.sev+'">'+r.sev+'</span></div></div>';
  });
  h+='</div>';
- $("#v-dashboard").innerHTML=h;
+ $("#v-analytics").innerHTML=h;
 }
 
-function vRegistry(){
- let h='<h2>Channel registry</h2><p class="sub">Master AC / SAC registry — owners, program status and rollups. Owners get assigned on Day 1–2 of the build plan.</p>';
- h+='<div class="panel scroll"><table class="tbl"><thead><tr><th>Code</th><th>Channel</th><th>Level</th><th>Legacy</th><th>Owner / POC</th><th>Status</th><th>Steps</th><th>GTM</th><th>Stoppers</th></tr></thead><tbody>';
- CHANNELS.forEach(c=>{
-  const rs=c.leaf?rowsFor(c.id):[];
-  const ind=c.level==="SAC"?"indent1":c.level==="SSC"?"indent2":"";
-  const st=c.leaf?LEDGER.filter(r=>r.ch===c.id&&r.stop).length:"";
-  h+='<tr><td class="mono" style="color:var(--saffron)">'+c.id+'</td>'
-   +'<td class="'+ind+'">'+esc(c.name)+(c.global?' <span class="tag glob">SHARED</span>':'')+'</td>'
-   +'<td class="mono fnt">'+c.level+'</td>'
-   +'<td class="mono fnt">'+(c.legacy||"—")+'</td>'
-   +'<td class="mut">'+(c.leaf?(c.global?"Engine leads":"Unassigned"):"—")+'</td>'
-   +'<td class="mut">'+(c.status||"—")+'</td>'
-   +'<td class="mono">'+(c.leaf?rs.length:"—")+'</td>'
-   +'<td class="mono">'+(c.leaf&&rs.length?gtmPct(rs)+"%":"—")+'</td>'
-   +'<td class="mono" style="color:'+(st>0?"var(--ember)":"var(--faint)")+'">'+(c.leaf?st:"—")+'</td></tr>';
- });
- h+='</tbody></table></div>';
- $("#v-registry").innerHTML=h;
-}
-
-function vCockpit(sel){
- sel=chById(sel)?sel:"SP-PHY";
- let h='<h2>Channel cockpit</h2><p class="sub">One channel, end to end across all 9 engines. Shared GLOBAL machinery appears dashed so channel-specific work reads clearly.</p>';
- h+='<div class="selrow">'+leaves.map(c=>'<button class="'+(c.id===sel?"on ":"")+(c.global?"gsel":"")+'" data-go="cockpit/'+c.id+'">'+c.id+'</button>').join('')+'</div>';
- const c=chById(sel);
- const own=rowsFor(sel);
- h+='<div class="kpis"><div class="kpi"><div class="n">'+esc(c.name)+'</div><div class="l mono">'+c.id+(c.legacy?' · legacy '+c.legacy:'')+'</div></div>'
-  +'<div class="kpi"><div class="n">'+own.length+'</div><div class="l">Channel-specific steps</div></div>'
-  +'<div class="kpi"><div class="n">'+gtmPct(own)+'%</div><div class="l">Weighted GTM (own steps)</div></div>'
-  +'<div class="kpi"><div class="n">'+own.filter(r=>r.stop).length+'</div><div class="l">Stoppers on this channel</div></div></div>';
- h+='<div style="height:10px"></div>';
+/* ---------------- section 2 · affiliate channels ---------------- */
+function stepsByEngine(cid){
+ let h='';
  ENGINES.forEach(e=>{
-  const mine=rowsFor(sel,e.id);
-  const glob=c.global?[]:rowsFor("GLOBAL",e.id);
-  h+='<div class="eng" id="eng-'+e.id+'"><div class="eh2"><span class="eid">'+e.id+'</span><span class="enm">'+esc(e.name)+'</span><span class="ecnt">'+mine.length+' own'+(glob.length?' · '+glob.length+' shared':'')+'</span></div>';
-  if(!mine.length&&!glob.length)h+='<div class="gap"><b>Coverage gap</b> — no steps defined for this engine yet.</div>';
-  mine.concat(glob).forEach(r=>{
-   const shared=r.ch==="GLOBAL"&&!c.global;
-   h+='<div class="step"'+(shared?' style="opacity:.72"':'')+'><div class="sq">'+String(r.seq).padStart(2,"0")+'</div>'
-    +'<div><div class="nm">'+esc(r.name)+(shared?' <span class="tag glob">GLOBAL</span>':'')+'</div>'
-    +'<div class="meta">'
-    +'<span><b>Owner</b> '+esc(r.owner)+'</span>'
-    +(r.poc?'<span><b>POC tool</b> '+esc(r.poc)+'</span>':'')
-    +(r.scaled?'<span><b>Scaled tool</b> '+esc(r.scaled)+'</span>':'')
-    +(r.data?'<span><b>Data</b> '+esc(r.data)+'</span>':'')
-    +'</div>'
-    +(r.stop?'<div class="stop"><span class="sev '+r.sev+'">'+r.sev+'</span>'+esc(r.stop)+'</div>':'')
-    +'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>';
-  });
-  h+='</div>';
+  const rs=rowsFor(cid,e.id);if(!rs.length)return;
+  h+='<div class="sengine"><span class="eid">'+e.id+'</span> '+esc(e.name)+'</div>';
+  rs.forEach(r=>{h+='<div class="step"><div class="sq">'+pad2(r.seq)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>'});
  });
- $("#v-cockpit").innerHTML=h;
+ return h||'<div class="gap">No steps defined for this channel yet — they land here once scoped.</div>';
+}
+function addFormHTML(kind,parent){
+ const isAC=kind==="ac";
+ return '<div class="addform">'
+  +'<input id="nm-'+kind+'" placeholder="'+(isAC?'Affiliate channel name':'Sub-affiliate channel name')+'" maxlength="60" aria-label="Channel name">'
+  +'<input id="cd-'+kind+'" class="code" placeholder="CODE (auto)" maxlength="6" aria-label="Channel code">'
+  +'<button class="go" data-save'+kind+'="'+(parent||'')+'">Add '+(isAC?'AC':'SAC')+'</button>'
+  +'<button class="xall" data-canceladd>Cancel</button>'
+  +(addErr?'<span class="err">'+esc(addErr)+'</span>':'')
+  +'</div>';
+}
+function renderSub(c){
+ const isOpen=openSAC.has(c.id);
+ const kids=childrenOf(c.id);
+ const rows=rowsMany(leafUnder(c.id).map(x=>x.id));
+ return '<div class="acc sac'+(isOpen?' open':'')+'" id="ch-'+c.id+'">'
+  +'<div class="acc-head"><button class="hmain" data-tglsac="'+c.id+'" aria-expanded="'+isOpen+'"><span class="chev">▸</span><span class="code">'+c.id+'</span><span class="anm">'+esc(c.name)+'</span>'+chTag(c)+'</button>'
+  +'<span class="astat">'+(kids.length?kids.length+' sub · ':'')+rows.length+' steps · '+gtmPct(rows)+'%</span>'
+  +(c.custom?'<button class="delx" data-del="'+c.id+'" title="Remove this added channel">×</button>':'')
+  +'</div><div class="acc-body">'
+  +(c.leaf?stepsByEngine(c.id):'')
+  +(kids.length?'<div class="sacblock">'+kids.map(renderSub).join('')+'</div>':'')
+  +'</div></div>';
+}
+function renderAC(c){
+ const isOpen=openAC.has(c.id);
+ const kids=childrenOf(c.id);
+ const rows=rowsMany(leafUnder(c.id).map(x=>x.id));
+ const d=nDesc(c.id);
+ return '<div class="acc'+(isOpen?' open':'')+'" id="ch-'+c.id+'">'
+  +'<div class="acc-head"><button class="hmain" data-tglac="'+c.id+'" aria-expanded="'+isOpen+'"><span class="chev">▸</span><span class="code'+(c.global?' g':'')+'">'+c.id+'</span><span class="anm">'+esc(c.name)+'</span>'+(c.global?'<span class="tag glob">SHARED</span>':chTag(c))+'</button>'
+  +'<span class="astat">'+(c.global?'':(d?d+' SAC · ':''))+statLine(rows)+'</span>'
+  +(c.custom?'<button class="delx" data-del="'+c.id+'" title="Remove this added channel">×</button>':'')
+  +'</div><div class="acc-body">'
+  +(c.leaf?stepsByEngine(c.id):'')
+  +(kids.length?'<div class="sacblock">'+kids.map(renderSub).join('')+'</div>':'')
+  +(c.global?'':(showAddSAC===c.id?addFormHTML("sac",c.id):'<button class="addbtn sm" data-showaddsac="'+c.id+'">＋ Add SAC</button>'))
+  +'</div></div>';
+}
+function vChannels(){
+ let h='<h2>Affiliate channels</h2><p class="sub">The AC / SAC registry. Each affiliate channel opens into its sub-affiliate channels (indented) and their engine steps. Additions are saved in this browser.</p>';
+ h+=showAddAC?addFormHTML("ac",null):'<button class="addbtn" data-showaddac style="margin-bottom:16px">＋ Add Affiliate Channel</button>';
+ allCh().filter(c=>!c.parent).forEach(c=>{h+=renderAC(c)});
+ $("#v-channels").innerHTML=h;
 }
 
-function vLens(sel){
- sel=ENGINES.some(e=>e.id===sel)?sel:"E1";
- const e=ENGINES.find(x=>x.id===sel);
- let h='<h2>Engine lens</h2><p class="sub">One engine compared across every channel — where it is defined, where it is live, and where the gaps are.</p>';
- h+='<div class="selrow">'+ENGINES.map(x=>'<button class="'+(x.id===sel?"on":"")+'" data-go="lens/'+x.id+'" title="'+esc(x.name)+'">'+x.id+'</button>').join('')+'</div>';
- h+='<div class="kpis"><div class="kpi"><div class="n">'+esc(e.name)+'</div><div class="l">'+esc(e.purpose)+'</div></div></div><div style="height:6px"></div>';
- const missing=realLeaves.filter(c=>rowsFor(c.id,sel).length===0);
- const globN=rowsFor("GLOBAL",sel).length;
- if(missing.length)h+='<div class="covergap"><b style="color:var(--ember)">Coverage gaps:</b> '+missing.map(c=>c.id).join(", ")+' have no channel-specific steps for '+sel+(globN?' — GLOBAL covers '+globN+' shared step(s), confirm whether that is sufficient per channel.':'.')+'</div>';
- else h+='<div class="coverok">All channels covered for '+sel+'.</div>';
- h+='<div class="panel">';
- leaves.forEach(c=>{
-  const rs=rowsFor(c.id,sel);
-  const cc=counts(rs);const tot=rs.length||1;
-  h+='<div class="lensrow"><div class="chname"><span class="c'+(c.global?" g":"")+'">'+c.id+'</span><span class="n mut">'+esc(c.name)+'</span></div>';
-  if(!rs.length){h+='<div class="fnt" style="font-size:12.5px">no steps</div><div></div></div>';return}
-  h+='<div class="bar" title="'+STATUSES.map(s=>s+": "+cc[s]).join(" · ")+'">'
-   +'<i style="width:'+(100*cc["Live"]/tot)+'%;background:var(--jade)"></i>'
-   +'<i style="width:'+(100*cc["Testable"]/tot)+'%;background:var(--sky)"></i>'
-   +'<i style="width:'+(100*cc["In build"]/tot)+'%;background:var(--saffron)"></i>'
-   +'</div><div class="mono" style="text-align:right">'+rs.length+'</div></div>';
+/* ---------------- section 3 · engine analysis ---------------- */
+function famState(ids){const sel=new Set(selLeaves().map(c=>c.id));const on=ids.filter(i=>sel.has(i)).length;return on===0?"off":on===ids.length?"on":"part"}
+function engStep(r,withCh){
+ if(withCh)return '<div class="step" style="grid-template-columns:96px 1fr auto"><div class="mono" style="color:var(--'+(r.ch==="GLOBAL"?'sky':'saffron')+');font-size:11px;padding-top:3px">'+r.ch+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>';
+ return '<div class="step"><div class="sq">'+pad2(r.seq)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>';
+}
+function vEngines(){
+ const sel=selLeaves();
+ const selIds=sel.map(c=>c.id);
+ let h='<h2>Engine analysis</h2><p class="sub">E1 → E9, each engine as its own drop-down, analysed for the affiliate channels you pick. Combine the selection into one aggregate or separate it back out per channel.</p>';
+ h+='<div class="panel fbar"><div class="fbar-top"><span class="fl">AC · SAC FILTER</span>'
+  +'<button class="fchip'+(engSel===null?' on':'')+'" data-fall title="Select every channel">ALL</button>'
+  +'<span class="modetog" role="group" aria-label="Combine mode"><button class="'+(engMode==="combined"?'on':'')+'" data-mode="combined" title="Merge selected channels into one aggregate">Combined</button><button class="'+(engMode==="separate"?'on':'')+'" data-mode="separate" title="Break the analysis out per channel">Separated</button></span></div>';
+ h+='<div class="fchips">';
+ allCh().filter(c=>!c.parent).forEach((t,i)=>{
+  if(i)h+='<span class="fdiv"></span>';
+  if(t.leaf){
+   h+='<button class="fchip'+(t.global?' g':'')+(famState([t.id])==="on"?' on':'')+'" data-fch="'+t.id+'" title="'+esc(t.name)+'">'+t.id+'</button>';
+  }else{
+   const lu=leafUnder(t.id).map(x=>x.id);
+   const st=famState(lu);
+   h+='<button class="fchip acp'+(st==="on"?' on':st==="part"?' part':'')+'" data-ffam="'+t.id+'" title="'+esc(t.name)+' — toggle the whole family">'+t.id+'</button><span class="fsub">›</span>';
+   leafUnder(t.id).forEach(l=>{h+='<button class="fchip'+(famState([l.id])==="on"?' on':'')+'" data-fch="'+l.id+'" title="'+esc(l.name)+'">'+l.id+'</button>'});
+  }
  });
- h+='</div><div class="sect">All steps for '+sel+'</div><div class="panel">';
- let any=false;
- leaves.forEach(c=>{
-  rowsFor(c.id,sel).forEach(r=>{any=true;
-   h+='<div class="step" style="grid-template-columns:110px 1fr auto"><div class="mono" style="color:var(--saffron);font-size:11px;padding-top:3px">'+r.ch+'</div>'
-    +'<div><div class="nm">'+esc(r.name)+'</div><div class="meta"><span><b>Owner</b> '+esc(r.owner)+'</span>'+(r.poc?'<span><b>POC tool</b> '+esc(r.poc)+'</span>':'')+(r.data?'<span><b>Data</b> '+esc(r.data)+'</span>':'')+'</div>'
-    +(r.stop?'<div class="stop"><span class="sev '+r.sev+'">'+r.sev+'</span>'+esc(r.stop)+'</div>':'')
-    +'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>';
-  });
+ h+='</div></div>';
+ h+='<div class="sect" style="display:flex;align-items:center;gap:8px">Engines · '+sel.length+' channel'+(sel.length!==1?'s':'')+' selected<span style="margin-left:auto;display:flex;gap:8px"><button class="xall" data-xall="open">Expand all</button><button class="xall" data-xall="close">Collapse all</button></span></div>';
+ if(!sel.length)h+='<div class="panel"><div class="gap"><b>No channels selected.</b> Pick AC / SAC chips above or hit ALL.</div></div>';
+ ENGINES.forEach(e=>{
+  const rows=rowsMany(selIds,e.id);
+  const isOpen=openENG.has(e.id);
+  h+='<div class="eng'+(isOpen?' open':'')+'" id="eng-'+e.id+'">'
+   +'<button class="eh2 eh2but" data-tgleng="'+e.id+'" aria-expanded="'+isOpen+'"><span class="chev">▸</span><span class="eid">'+e.id+'</span><span class="enm">'+esc(e.name)+'</span><span class="ecnt">'+(rows.length?statLine(rows):'no steps in selection')+'</span>'+barHTML(rows,120)+'</button>'
+   +'<div class="engbody">'
+   +'<div class="purp">'+esc(e.purpose)+'</div>';
+  if(!rows.length){h+='<div class="gap"><b>Coverage gap</b> — nothing defined for '+e.id+' in the current selection.</div>'}
+  else if(engMode==="combined"){
+   h+='<div class="combar">'+barHTML(rows,220)+'<span class="mono fnt" style="font-size:11px">'+statLine(rows)+'</span></div>';
+   rows.forEach(r=>{h+=engStep(r,true)});
+  }else{
+   const none=[];
+   sel.forEach(c=>{
+    const rs=rowsFor(c.id,e.id);
+    if(!rs.length){none.push(c.id);return}
+    h+='<div class="subch"><span class="code'+(c.global?' g':'')+'">'+c.id+'</span><span>'+esc(c.name)+'</span>'+barHTML(rs,120)+'<span class="cnt">'+rs.length+' steps · '+gtmPct(rs)+'%</span></div>';
+    rs.forEach(r=>{h+=engStep(r,false)});
+   });
+   if(none.length)h+='<div class="gap">No steps here for: <span class="mono">'+none.join(", ")+'</span></div>';
+  }
+  h+='</div></div>';
  });
- if(!any)h+='<div class="gap">Nothing defined anywhere for this engine yet.</div>';
- h+='</div>';
- $("#v-lens").innerHTML=h;
+ $("#v-engines").innerHTML=h;
 }
 
 /* ---------------- router ---------------- */
+let appliedHash=null;
 function router(){
- const parts=(location.hash.replace(/^#\/?/,"")||"dashboard").split("/");
- const view=["dashboard","registry","cockpit","lens"].includes(parts[0])?parts[0]:"dashboard";
+ let parts=(location.hash.replace(/^#\/?/,"")||"analytics").split("/");
+ if(parts[0]==="dashboard")parts=["analytics"];
+ if(parts[0]==="registry")parts=["channels"];
+ if(parts[0]==="lens")parts=["engines",parts[1]];
+ if(parts[0]==="cockpit")parts=parts[2]?["engines",parts[2],parts[1]]:["channels",parts[1]];
+ const view=["analytics","channels","engines"].includes(parts[0])?parts[0]:"analytics";
+ const fresh=location.hash!==appliedHash;appliedHash=location.hash;
+ if(fresh&&view==="engines"){
+  if(parts[1]&&ENGINES.some(e=>e.id===parts[1]))openENG.add(parts[1]);
+  if(parts[2]&&chById(parts[2]))engSel=new Set(leafUnder(parts[2]).map(c=>c.id));
+ }
+ if(fresh&&view==="channels"&&parts[1]&&chById(parts[1])){
+  openChain(parts[1]);
+  const c=chById(parts[1]);
+  if(c.parent)openSAC.add(c.id);else openAC.add(c.id);
+ }
  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===view));
  document.querySelectorAll(".view").forEach(v=>v.classList.remove("on"));
  $("#v-"+view).classList.add("on");
- if(view==="dashboard")vDashboard();
- if(view==="registry")vRegistry();
- if(view==="cockpit")vCockpit(parts[1]);
- if(view==="lens")vLens(parts[1]);
- if(view==="cockpit"&&parts[2]){const el=document.getElementById("eng-"+parts[2]);if(el)setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),60)}
+ if(view==="analytics")vAnalytics();
+ if(view==="channels")vChannels();
+ if(view==="engines")vEngines();
+ if(fresh){
+  let target=null;
+  if(view==="engines"&&parts[1]&&ENGINES.some(e=>e.id===parts[1]))target="eng-"+parts[1];
+  if(view==="channels"&&parts[1]&&chById(parts[1]))target="ch-"+parts[1];
+  if(target){const el=document.getElementById(target);if(el)setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),60)}
+ }
+ const rb=$("#resetChBtn");if(rb)rb.style.display=CUSTOM.length?"":"none";
 }
 document.addEventListener("click",ev=>{
- const go=ev.target.closest("[data-go]");
- if(go){location.hash="#/"+go.dataset.go;return}
- const nv=ev.target.closest("nav button");
- if(nv){location.hash="#/"+nv.dataset.v;return}
- const cyc=ev.target.closest("[data-cyc]");
- if(cyc){const r=LEDGER.find(x=>rowId(x)===cyc.dataset.cyc);if(r)cycle(r)}
+ const t=ev.target;
+ const go=t.closest("[data-go]");if(go){location.hash="#/"+go.dataset.go;return}
+ const nv=t.closest("nav button");if(nv){location.hash="#/"+nv.dataset.v;return}
+ const cyc=t.closest("[data-cyc]");if(cyc){const r=LEDGER.find(x=>rowId(x)===cyc.dataset.cyc);if(r)cycle(r);return}
+ const tac=t.closest("[data-tglac]");if(tac){const id=tac.dataset.tglac;if(openAC.has(id))openAC.delete(id);else openAC.add(id);router();return}
+ const tsc=t.closest("[data-tglsac]");if(tsc){const id=tsc.dataset.tglsac;if(openSAC.has(id))openSAC.delete(id);else openSAC.add(id);router();return}
+ const ten=t.closest("[data-tgleng]");if(ten){const id=ten.dataset.tgleng;if(openENG.has(id))openENG.delete(id);else openENG.add(id);router();return}
+ const mt=t.closest("[data-metric]");if(mt){metric=mt.dataset.metric;router();return}
+ const md=t.closest("[data-mode]");if(md){engMode=md.dataset.mode;router();return}
+ if(t.closest("[data-fall]")){engSel=null;router();return}
+ const fc=t.closest("[data-fch]");if(fc){toggleLeaf(fc.dataset.fch);router();return}
+ const ff=t.closest("[data-ffam]");if(ff){toggleFam(ff.dataset.ffam);router();return}
+ const xa=t.closest("[data-xall]");if(xa){if(xa.dataset.xall==="open")ENGINES.forEach(e=>openENG.add(e.id));else openENG.clear();router();return}
+ if(t.closest("[data-showaddac]")){showAddAC=true;showAddSAC=null;addErr="";router();focusAdd("ac");return}
+ const sas=t.closest("[data-showaddsac]");if(sas){showAddSAC=sas.dataset.showaddsac;showAddAC=false;addErr="";router();focusAdd("sac");return}
+ if(t.closest("[data-canceladd]")){showAddAC=false;showAddSAC=null;addErr="";router();return}
+ if(t.closest("[data-saveac]")){addChannel("ac",null);return}
+ const svs=t.closest("[data-savesac]");if(svs){addChannel("sac",svs.dataset.savesac);return}
+ const dl=t.closest("[data-del]");if(dl){delChannel(dl.dataset.del);return}
+});
+document.addEventListener("keydown",ev=>{
+ if(ev.key!=="Enter")return;
+ const id=ev.target&&ev.target.id;
+ if(id==="nm-ac"||id==="cd-ac"){ev.preventDefault();addChannel("ac",null)}
+ else if(id==="nm-sac"||id==="cd-sac"){ev.preventDefault();addChannel("sac",showAddSAC)}
 });
 $("#resetBtn").addEventListener("click",()=>{overrides={};saveOv();router()});
+$("#resetChBtn").addEventListener("click",()=>{
+ if(!CUSTOM.length)return;
+ if(confirm("Remove all "+CUSTOM.length+" added channel(s)? Seed v0 channels stay.")){CUSTOM=[];engSel=null;saveCh();router()}
+});
 window.addEventListener("hashchange",router);
 router();
 </script>
