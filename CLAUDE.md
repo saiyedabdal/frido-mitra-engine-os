@@ -24,10 +24,10 @@ Views (hash-routed, all rendered from embedded data):
 ## Deploy (Netlify)
 - Production site: **frido-mitra-engine-os.netlify.app**
 - Site ID: `cd2203a6-e56e-4c25-a01a-50e808e2bbc1` (team: Founders Office / `saiyedabdal`)
-- GitHub repo: **github.com/saiyedabdal/frido-mitra-engine-os** (private)
-- One-time: `netlify link --id cd2203a6-e56e-4c25-a01a-50e808e2bbc1`
-- Ship: `netlify deploy --prod` (publish dir `.` per `netlify.toml`). Currently a manual CLI deploy — Git-triggered auto-deploy is not yet wired (see Roadmap #3).
-- Preferred CI/CD once auto-deploy is wired: push branch → Netlify deploy preview → Abdal reviews preview URL → merge to main = production.
+- GitHub repo: **github.com/saiyedabdal/frido-mitra-engine-os** (public)
+- **Continuous deployment is LIVE**: any push to `main` → Netlify auto-builds & publishes to production (publish dir `.`, no build cmd). Wired via a Netlify deploy key + a GitHub push webhook → `api.netlify.com/hooks/github` (deploy-key method, not the GitHub App).
+- ⚠️ Because `main` auto-publishes, treat `main` as production. Do real work on feature branches → open a PR → review the Netlify **deploy preview** → merge to `main` (that merge is the prod approval). Don't commit straight to `main` unless you intend it live immediately.
+- Manual fallback: `netlify link --id cd2203a6-e56e-4c25-a01a-50e808e2bbc1` then `netlify deploy --prod`.
 
 ## Operating rule
 **Never deploy to production without Abdal's explicit approval of a change summary.** Deploy previews / local serves are fine without approval; production is not.
@@ -35,7 +35,7 @@ Views (hash-routed, all rendered from embedded data):
 ## Roadmap (v1.1+ candidates, in rough order)
 1. Live data: replace embedded seed with a fetch from a Google Apps Script `doGet` JSON endpoint on the master Sheet (keep embedded seed as offline fallback).
 2. Owner assignment pass once Day 1–2 owner mapping lands (registry + ledger `owner` fields are mostly "Unassigned" by design right now).
-3. ~~GitHub repo~~ (done) + Netlify auto-deploy (true PR-gated pipeline). Repo is live and privately hosted; still to do: connect the repo in Netlify (Site → Build & deploy → Link repository) so pushes auto-build.
+3. ~~GitHub repo + Netlify auto-deploy (true PR-gated pipeline).~~ **Done** — public repo; push-to-`main` auto-deploys to production (deploy key + GitHub webhook). PR deploy previews work out of the box.
 4. METRICS layer per design doc Phase 2: RR actuals (affiliates, links, CTA clicks, conversions) feeding the Dashboard; later BigQuery `frido-429506` CM2 for E7.
 
 ## Context docs
