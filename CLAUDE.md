@@ -35,7 +35,7 @@ Views (hash-routed, all rendered from embedded data):
 ## Roadmap (v1.1+ candidates, in rough order)
 1. Live data: replace embedded seed with a fetch from a Google Apps Script `doGet` JSON endpoint on the master Sheet (keep embedded seed as offline fallback).
 2. Owner assignment pass once Day 1–2 owner mapping lands (registry + ledger `owner` fields are mostly "Unassigned" by design right now).
-3. ~~GitHub repo + Netlify auto-deploy (true PR-gated pipeline).~~ **Done** — public repo; push-to-`main` auto-deploys to production (deploy key + GitHub webhook). PR deploy previews work out of the box.
+3. ~~GitHub repo + Netlify auto-deploy.~~ **Done** — public repo; push-to-`main` auto-deploys to production (deploy key + GitHub webhook, verified). Optional upgrade: connect the Netlify **GitHub App** in the UI (Site → Build & deploy → Link repository → GitHub) to get deploy-preview status checks posted back onto PRs — the current deploy-key wiring handles builds but not PR status checks.
 4. METRICS layer per design doc Phase 2: RR actuals (affiliates, links, CTA clicks, conversions) feeding the Dashboard; later BigQuery `frido-429506` CM2 for E7.
 
 ## Context docs
