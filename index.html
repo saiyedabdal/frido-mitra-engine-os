@@ -146,6 +146,141 @@ h2{font-family:var(--disp);font-weight:600;font-size:26px;margin-bottom:4px}
 .covergap{border:1px solid rgba(229,84,75,.35);background:rgba(229,84,75,.07);border-radius:12px;padding:12px 16px;font-size:13.5px;margin-bottom:16px}
 .coverok{border:1px solid rgba(52,195,136,.3);background:rgba(52,195,136,.06);border-radius:12px;padding:12px 16px;font-size:13.5px;margin-bottom:16px;color:var(--jade)}
 
+/* accordions — affiliate channels */
+.acc{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.acc-head{display:flex;align-items:center;gap:10px;padding-right:12px;background:var(--panel2)}
+.acc-head .hmain{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:13px 0 13px 16px;text-align:left}
+.chev{font-size:11px;color:var(--faint);transition:transform .15s ease;flex:none}
+.acc.open>.acc-head .chev{transform:rotate(90deg)}
+.acc-head .code{font-family:var(--mono);font-size:12px;color:var(--saffron);flex:none}
+.acc-head .code.g{color:var(--sky)}
+.acc-head .anm{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acc-head .astat{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap;flex:none}
+.acc-body{display:none;border-top:1px solid var(--line)}
+.acc.open>.acc-body{display:block}
+.sacblock{margin:10px 0 12px 26px;border-left:2px solid rgba(148,163,184,.18)}
+.sac{background:transparent;border:0;border-radius:0;margin-bottom:0}
+.sac>.acc-head{background:transparent}
+.sac>.acc-head .hmain{padding:10px 0 10px 14px}
+.sac>.acc-body{border-top:1px dashed var(--line)}
+.sengine{display:flex;gap:8px;align-items:baseline;padding:12px 16px 2px;font-size:12.5px;color:var(--muted)}
+.sengine .eid{font-family:var(--mono);font-size:11px;color:var(--saffron)}
+.tag.ac{background:rgba(240,162,49,.12);color:var(--saffron)}
+.tag.sac{background:rgba(148,163,184,.12);color:var(--muted)}
+.tag.custom{background:rgba(139,148,167,.15);color:var(--muted)}
+.delx{color:var(--faint);font-size:15px;line-height:1;padding:4px 8px;border-radius:6px;flex:none}
+.delx:hover{color:var(--ember);background:rgba(229,84,75,.12)}
+.addbtn{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);border:1px dashed var(--line);border-radius:10px;padding:8px 14px}
+.addbtn:hover{color:var(--text);border-color:var(--saffron)}
+.addbtn.sm{font-size:12px;padding:6px 12px;margin:10px 16px 14px}
+.addform{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 16px;background:rgba(148,163,184,.04);border-radius:12px;border:1px dashed var(--line);margin-bottom:16px}
+.acc .addform{border:0;border-top:1px dashed var(--line);border-radius:0;margin-bottom:0}
+.addform input{background:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;color:var(--text);font-size:13px;min-width:210px}
+.addform input.code{min-width:110px;font-family:var(--mono);text-transform:uppercase}
+.addform .go{background:var(--saffron);color:var(--ink);border-radius:8px;padding:7px 14px;font-weight:600;font-size:13px}
+.addform .err{color:var(--ember);font-size:12px}
+
+/* analytics matrix */
+.mtx td{padding:0;border-bottom:1px solid rgba(148,163,184,.07)}
+.mtx td.chcell{padding:9px 12px}
+.mtx .cellb{display:block;width:100%;padding:9px 6px;font-family:var(--mono);font-size:12px;text-align:center;color:var(--text)}
+.mtx .cellb:hover{box-shadow:inset 0 0 0 1px var(--line)}
+.mtx tfoot td{border-top:1px solid var(--line);border-bottom:0;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding:9px 6px;text-align:center}
+.mtx tfoot td:first-child{text-align:left;padding-left:12px}
+
+/* engine analysis */
+.fbar{padding:12px 14px;margin-bottom:16px}
+.fbar-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.fbar-top .fl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--faint)}
+.modetog{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-left:auto}
+.modetog button{padding:5px 12px;font-size:12px;color:var(--muted)}
+.modetog button.on{background:var(--sky);color:var(--ink);font-weight:600}
+.fchips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.fchip{font-family:var(--mono);font-size:11.5px;padding:5px 10px;border-radius:7px;border:1px solid var(--line);color:var(--muted);background:var(--panel2)}
+.fchip:hover{color:var(--text)}
+.fchip.on{background:var(--saffron);color:var(--ink);border-color:var(--saffron);font-weight:500}
+.fchip.g.on{background:var(--sky);border-color:var(--sky)}
+.fchip.part{background:rgba(240,162,49,.16);color:var(--saffron);border-color:rgba(240,162,49,.5)}
+.fchip.acp{font-weight:600}
+.fdiv{width:1px;height:18px;background:var(--line);margin:0 3px;flex:none}
+.fsub{color:var(--faint);font-size:10px}
+.eng .engbody{display:none}
+.eng.open .engbody{display:block}
+.eng.open>.eh2 .chev{transform:rotate(90deg)}
+.eh2but{width:100%;text-align:left;cursor:pointer;align-items:center}
+.eh2but:hover{background:rgba(148,163,184,.08)}
+.purp{padding:12px 16px 0;font-size:12.5px;color:var(--muted)}
+.combar{display:flex;align-items:center;gap:12px;padding:12px 16px;flex-wrap:wrap}
+.subch{display:flex;align-items:center;gap:10px;padding:9px 16px;background:rgba(148,163,184,.05);border-top:1px solid var(--line);font-size:12.5px;flex-wrap:wrap}
+.subch .code{font-family:var(--mono);font-size:11px;color:var(--saffron)}
+.subch .code.g{color:var(--sky)}
+.subch .cnt{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.xall{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:4px 10px}
+.xall:hover{color:var(--text)}
+@media(max-width:720px){
+  .acc-head .astat{display:none}
+  .eh2but .ecnt{display:none}
+  .eh2but .bar{display:none}
+}
+
+/* v1.2 — priority numbers, edit, drag & drop */
+.numb{font-family:var(--mono);font-size:11px;min-width:26px;height:20px;padding:0 6px;border-radius:6px;background:rgba(240,162,49,.14);color:var(--saffron);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.numb.g{background:rgba(90,167,240,.14);color:var(--sky)}
+.codemini{font-family:var(--mono);font-size:10px;color:var(--faint)}
+.hicon{color:var(--faint);font-size:13px;padding:4px 7px;border-radius:6px;flex:none;line-height:1}
+.hicon:hover{color:var(--text);background:rgba(148,163,184,.12)}
+.grip{cursor:grab;color:var(--faint);font-size:13px;padding:0 2px 0 12px;flex:none;user-select:none}
+.acc-head.dragsrc{opacity:.4}
+.acc-head.dropb{box-shadow:inset 0 2px 0 var(--saffron)}
+.editrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 16px;border-top:1px dashed var(--line);background:rgba(148,163,184,.04)}
+.editrow input{background:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 10px;color:var(--text);font-size:13px}
+.editrow input.num{width:64px;font-family:var(--mono)}
+.editrow .go{background:var(--saffron);color:var(--ink);border-radius:8px;padding:6px 12px;font-weight:600;font-size:12.5px}
+.editrow .lbl{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+
+/* engine verdicts, sub-tabs, editing */
+.vsel{background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit;font-size:12.5px;padding:6px 10px}
+.verd{font-family:var(--mono);font-size:10.5px;padding:3px 9px;border-radius:999px;flex:none;white-space:nowrap}
+.verd.go{background:rgba(52,195,136,.15);color:var(--jade);border:1px solid rgba(52,195,136,.4)}
+.verd.pend{background:rgba(240,162,49,.15);color:var(--saffron);border:1px solid rgba(240,162,49,.4)}
+.verd.stop{background:rgba(229,84,75,.15);color:var(--ember);border:1px solid rgba(229,84,75,.4)}
+.etabs{display:flex;gap:4px;padding:12px 16px 0;flex-wrap:wrap}
+.etabs button{font-family:var(--mono);font-size:11px;padding:5px 11px;border-radius:7px;border:1px solid var(--line);color:var(--muted)}
+.etabs button.on{background:var(--sky);color:var(--ink);border-color:var(--sky);font-weight:600}
+.vrow{display:flex;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px dashed var(--line);flex-wrap:wrap}
+.vrow .rem{flex:1;min-width:180px;background:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 10px;color:var(--text);font-size:12.5px}
+.divline{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);padding:12px 16px 2px;text-transform:uppercase}
+
+/* channels checkbox dropdown (engine filter) */
+.droproot{position:relative;display:inline-block}
+.dropbtn{display:inline-flex;align-items:center;gap:8px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12.5px;color:var(--text)}
+.dropbtn:hover{border-color:var(--saffron)}
+.dropbtn .chev{font-size:9px}
+.droppanel{position:absolute;top:calc(100% + 6px);left:0;z-index:40;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.5);padding:10px;min-width:300px;max-height:420px;overflow:auto}
+.ckrow{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;font-size:13px;cursor:pointer}
+.ckrow:hover{background:rgba(148,163,184,.07)}
+.ckrow input{accent-color:var(--saffron);width:15px;height:15px;flex:none}
+.ckrow.sub{margin-left:24px}
+.ckrow.sub2{margin-left:44px}
+.ckrow .codemini{margin-left:auto}
+.selwarn{color:var(--ember);font-size:12px;padding:6px 8px}
+.drophead{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);padding:6px 8px 2px;text-transform:uppercase}
+
+/* tools & team cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card .chead{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}
+.card .chead .tname{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .chead .cnt{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap}
+.card .cbody{padding:10px 16px 12px}
+.loadbar{height:8px;border-radius:4px;background:var(--panel2);overflow:hidden;margin:8px 0}
+.loadbar i{display:block;height:100%;background:var(--saffron)}
+.mini{font-size:12px;color:var(--muted)}
+.miniline{display:flex;gap:8px;align-items:baseline;padding:5px 0;border-bottom:1px solid rgba(148,163,184,.06);font-size:12.5px;flex-wrap:wrap}
+.miniline:last-child{border-bottom:0}
+.srch{background:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 12px;color:var(--text);font-size:13px;min-width:220px}
+.ownin{background:var(--ink);border:1px solid var(--line);border-radius:7px;padding:4px 8px;color:var(--text);font-size:12px;min-width:140px}
+
 /* stopper feed */
 .feed .step{grid-template-columns:1fr auto}
 footer{border-top:1px solid var(--line);margin-top:40px;padding:20px 24px;max-width:1240px;margin-left:auto;margin-right:auto;font-size:12px;color:var(--faint);display:flex;gap:18px;flex-wrap:wrap;align-items:center}
@@ -167,27 +302,31 @@ footer button:hover{color:var(--text)}
       <span class="eyebrow">FRIDO MITRA · AFFILIATE PROGRAM</span>
       <h1>Engine OS</h1>
     </div>
-    <nav id="nav" aria-label="Views">
-      <button data-v="dashboard">Dashboard</button>
-      <button data-v="registry">Registry</button>
-      <button data-v="cockpit">Cockpit</button>
-      <button data-v="lens">Lens</button>
+    <nav id="nav" aria-label="Sections">
+      <button data-v="analytics">Analytics</button>
+      <button data-v="channels">Affiliate Channels</button>
+      <button data-v="engines">Engine Analysis</button>
+      <button data-v="tools">Tools</button>
+      <button data-v="team">Team</button>
     </nav>
-    <span class="ver">v1.0 · seed</span>
+    <span class="ver">v1.2 · ops</span>
   </div>
 </header>
 
 <main>
-  <section class="view" id="v-dashboard"></section>
-  <section class="view" id="v-registry"></section>
-  <section class="view" id="v-cockpit"></section>
-  <section class="view" id="v-lens"></section>
+  <section class="view" id="v-analytics"></section>
+  <section class="view" id="v-channels"></section>
+  <section class="view" id="v-engines"></section>
+  <section class="view" id="v-tools"></section>
+  <section class="view" id="v-team"></section>
 </main>
 
 <footer>
   <span>System of record: Google Sheet (Engine OS design §2). This build: embedded seed v1 — rows tagged <span class="tag v0">V0</span> come from the master sheet; <span class="tag draft">DRAFT</span> rows need Sprint-1 confirmation.</span>
-  <span>Status clicks are saved in this browser only.</span>
+  <span>Status clicks, added channels, priorities, verdicts and owner edits are saved in this browser only.</span>
   <button id="resetBtn">Reset local status edits</button>
+  <button id="resetChBtn">Remove added channels</button>
+  <button id="resetAllBtn">Reset ALL local edits</button>
 </footer>
 
 <script>
@@ -273,41 +412,234 @@ function cycle(r){const i=STATUSES.indexOf(eff(r));overrides[rowId(r)]=STATUSES[
 /* ---------------- helpers ---------------- */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const leaves=CHANNELS.filter(c=>c.leaf);
-const realLeaves=leaves.filter(c=>!c.global);
-const chById=id=>CHANNELS.find(c=>c.id===id);
+function loadLS(k,fb){try{const v=JSON.parse(localStorage.getItem(k));return v==null?fb:v}catch(e){return fb}}
+function saveLS(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+
+/* browser-local stores (seed constants above are never mutated) */
+const CHKEY="fm_channels_v1";   let CUSTOM=loadLS(CHKEY,[]);   if(!Array.isArray(CUSTOM))CUSTOM=[];
+const CMKEY="fm_chmeta_v1";    let CHMETA=loadLS(CMKEY,{});   /* {chId:{name,prio}} */
+const EMKEY="fm_engmeta_v1";   let ENGMETA=loadLS(EMKEY,{});  /* {engId:{name,purpose,verdict,remark}} */
+const OWKEY="fm_owner_v1";     let OWNMAP=loadLS(OWKEY,{});   /* {rowId:owner} */
+const TMKEY="fm_team_v1";      let TEAM=loadLS(TMKEY,[]);     if(!Array.isArray(TEAM))TEAM=[];
+function saveCh(){saveLS(CHKEY,CUSTOM)}
+function saveCM(){saveLS(CMKEY,CHMETA)}
+function saveEM(){saveLS(EMKEY,ENGMETA)}
+function saveOW(){saveLS(OWKEY,OWNMAP)}
+function saveTM(){saveLS(TMKEY,TEAM)}
+
+function allCh(){
+ const m=CHANNELS.concat(CUSTOM.map(c=>({...c})));
+ m.forEach(c=>{if(c.custom)c.leaf=!m.some(k=>k.parent===c.id)});
+ return m;
+}
+const chById=id=>allCh().find(c=>c.id===id);
+const childrenOf=id=>allCh().filter(c=>c.parent===id);
+function effChName(c){return (CHMETA[c.id]&&CHMETA[c.id].name)||c.name}
+function prioOf(id,fallback){const m=CHMETA[id];return m&&typeof m.prio==="number"?m.prio:fallback}
+function ordKids(pid){
+ const kids=allCh().filter(c=>c.parent===pid);
+ return kids.map((c,i)=>({c,i})).sort((a,b)=>(prioOf(a.c.id,a.i+1)-prioOf(b.c.id,b.i+1))||(a.i-b.i)).map(x=>x.c);
+}
+function ordTops(){
+ const tops=allCh().filter(c=>!c.parent&&!c.global);
+ return tops.map((c,i)=>({c,i})).sort((a,b)=>(prioOf(a.c.id,a.i+1)-prioOf(b.c.id,b.i+1))||(a.i-b.i)).map(x=>x.c);
+}
+function buildNums(){
+ const map={GLOBAL:"G"};
+ const walk=(list,prefix)=>{list.forEach((c,i)=>{const n=prefix?prefix+"."+(i+1):String(i+1);map[c.id]=n;walk(ordKids(c.id),n)})};
+ walk(ordTops(),"");
+ return map;
+}
+function leafListOrdered(){
+ const out=[];const g=chById("GLOBAL");if(g)out.push(g);
+ const walk=list=>{list.forEach(c=>{if(c.leaf)out.push(c);walk(ordKids(c.id))})};
+ walk(ordTops());
+ return out;
+}
+const leafList=()=>leafListOrdered();
+const realLeafList=()=>leafList().filter(c=>!c.global);
+function leafUnder(id){const c=chById(id);if(!c)return[];if(c.leaf)return[c];let out=[];ordKids(id).forEach(k=>{out=out.concat(leafUnder(k.id))});return out}
+function nDesc(id){return childrenOf(id).reduce((n,k)=>n+1+nDesc(k.id),0)}
 const rowsFor=(ch,eng)=>LEDGER.filter(r=>r.ch===ch&&(!eng||r.eng===eng)).sort((a,b)=>a.eng===b.eng?a.seq-b.seq:a.eng<b.eng?-1:1);
+function rowsMany(ids,eng){const s=new Set(ids);return LEDGER.filter(r=>s.has(r.ch)&&(!eng||r.eng===eng)).sort((a,b)=>a.ch!==b.ch?(a.ch<b.ch?-1:1):a.eng!==b.eng?(a.eng<b.eng?-1:1):a.seq-b.seq)}
 function counts(rows){const c={"Not started":0,"In build":0,"Testable":0,"Live":0};rows.forEach(r=>c[eff(r)]++);return c}
 function gtmPct(rows){if(!rows.length)return 0;const c=counts(rows);return Math.round(100*(c["Live"]*3+c["Testable"]*2+c["In build"])/(3*rows.length))}
 function stChipCls(s){return "st"+STATUSES.indexOf(s)}
 function statChip(r){const s=eff(r);const local=overrides[rowId(r)]&&overrides[rowId(r)]!==r.gtm;
  return '<button class="chip click '+stChipCls(s)+'" data-cyc="'+rowId(r)+'" title="Click to cycle status (saved locally)">'+(local?'<span class="ldot"></span>':'')+esc(s)+'</button>'}
 function srcTag(r){return '<span class="tag '+(r.src==="v0"?"v0":"draft")+'">'+(r.src==="v0"?"V0":"DRAFT")+'</span>'}
+function chTag(c){return '<span class="tag '+(c.level==="AC"?"ac":"sac")+'">'+(c.level==="AC"?"AC":"SAC")+'</span>'+(c.custom?' <span class="tag custom">ADDED</span>':'')}
+function barHTML(rows,w){const cc=counts(rows);const tot=rows.length||1;
+ return '<span class="bar"'+(w?' style="min-width:'+w+'px;max-width:'+w+'px"':'')+' title="'+STATUSES.map(s=>s+": "+cc[s]).join(" · ")+'">'
+ +'<i style="width:'+(100*cc["Live"]/tot)+'%;background:var(--jade)"></i>'
+ +'<i style="width:'+(100*cc["Testable"]/tot)+'%;background:var(--sky)"></i>'
+ +'<i style="width:'+(100*cc["In build"]/tot)+'%;background:var(--saffron)"></i></span>'}
+function statLine(rows){const cc=counts(rows);const st=rows.filter(r=>r.stop).length;
+ return rows.length+' steps · '+cc["Live"]+' live · GTM '+gtmPct(rows)+'%'+(st?' · <span style="color:var(--ember)">'+st+' stopper'+(st>1?'s':'')+'</span>':'')}
+function effOwner(r){return OWNMAP[rowId(r)]||r.owner}
+function metaLine(r){return '<div class="meta"><span><b>Owner</b> '+esc(effOwner(r))+'</span>'
+ +(r.poc?'<span><b>POC tool</b> '+esc(r.poc)+'</span>':'')
+ +(r.scaled?'<span><b>Scaled tool</b> '+esc(r.scaled)+'</span>':'')
+ +(r.data?'<span><b>Data</b> '+esc(r.data)+'</span>':'')+'</div>'}
+function stopLine(r){return r.stop?'<div class="stop"><span class="sev '+r.sev+'">'+r.sev+'</span>'+esc(r.stop)+'</div>':''}
+const pad2=n=>String(n).padStart(2,"0");
+function effEng(e){const m=ENGMETA[e.id]||{};return {name:m.name||e.name,purpose:m.purpose||e.purpose,verdict:m.verdict||"",remark:m.remark||""}}
+const VERDICTS={go:"Go Ahead",pend:"Pending",stop:"Showstopper"};
+function verdPill(eid){const v=(ENGMETA[eid]||{}).verdict;if(!v)return"";return '<span class="verd '+v+'">'+(v==="go"?"🟢 ":v==="pend"?"🟡 ":"🔴 ")+VERDICTS[v]+'</span>'}
 
-/* ---------------- views ---------------- */
-function vDashboard(){
+/* tool + owner aggregation ("garner from all places") */
+const TOOL_ALIAS={"RR":"Refer Rush"};
+function toolTokens(str){return String(str||"").split(/[+,]/).map(s=>s.trim()).filter(Boolean).map(t=>TOOL_ALIAS[t]||t)}
+function toolAgg(rows){
+ const map={};
+ rows.forEach(r=>{
+  const add=(t,kind)=>{if(!map[t])map[t]={tool:t,rows:[],engines:new Set(),channels:new Set(),kinds:new Set()};
+   if(!map[t].rows.includes(r))map[t].rows.push(r);map[t].engines.add(r.eng);map[t].channels.add(r.ch);map[t].kinds.add(kind)};
+  toolTokens(r.poc).forEach(t=>add(t,"POC"));
+  toolTokens(r.scaled).forEach(t=>add(t,"Scaled"));
+ });
+ return Object.values(map).sort((a,b)=>b.rows.length-a.rows.length||a.tool.localeCompare(b.tool));
+}
+function ownerAgg(rows){
+ const map={};
+ rows.forEach(r=>{
+  const o=effOwner(r);if(o==="—")return;
+  if(!map[o])map[o]={owner:o,rows:[],engines:new Set(),stoppers:0};
+  map[o].rows.push(r);map[o].engines.add(r.eng);if(r.stop)map[o].stoppers++;
+ });
+ return map;
+}
+
+/* ---------------- ui state ---------------- */
+const openAC=new Set(),openSAC=new Set(),openENG=new Set();
+const engTabs={};
+let modeC=true,modeS=false;
+let engSel=null;            /* null = every leaf channel selected */
+let metric="gtm";
+let showAddAC=false,showAddSAC=null,addErr="";
+let editCh=null,editEng=null,editOwn=null,dropOpen=false,selWarn=false,toolQ="",dragId=null;
+function selLeaves(){const all=leafList();return engSel===null?all:all.filter(c=>engSel.has(c.id))}
+function openChain(id){let cur=chById(id);while(cur&&cur.parent){const p=chById(cur.parent);if(p){if(p.parent)openSAC.add(p.id);else openAC.add(p.id)}cur=p}}
+function materializeSel(){if(engSel===null)engSel=new Set(leafList().map(c=>c.id))}
+function normalizeSel(){if(engSel&&engSel.size===leafList().length)engSel=null}
+function applySelChange(fn){
+ materializeSel();
+ const backup=new Set(engSel);
+ fn();
+ if(engSel.size===0){engSel=backup;selWarn=true}else{selWarn=false;normalizeSel()}
+}
+function toggleLeaf(id){applySelChange(()=>{if(engSel.has(id))engSel.delete(id);else engSel.add(id)})}
+function toggleFam(id){applySelChange(()=>{const lu=leafUnder(id).map(x=>x.id);const allOn=lu.every(i=>engSel.has(i));lu.forEach(i=>{if(allOn)engSel.delete(i);else engSel.add(i)})})}
+
+/* ---------------- channel mutations ---------------- */
+function sanitizeCode(s){return String(s||"").toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,6)}
+function autoCode(name){
+ const w=String(name).trim().split(/\s+/).filter(Boolean);
+ let base=w.length>=2?w.map(x=>x[0]).join(""):String(w[0]||"").slice(0,3);
+ return sanitizeCode(base)||"CH";
+}
+function uniqueId(id){let out=id,n=2;while(chById(out)){out=id+n;n++}return out}
+function addChannel(kind,parent){
+ const nmEl=$("#nm-"+kind),cdEl=$("#cd-"+kind);
+ const nm=(nmEl?nmEl.value:"").trim();
+ const typed=sanitizeCode(cdEl?cdEl.value:"");
+ if(!nm){addErr="Give the channel a name.";router();focusAdd(kind);return}
+ const code=typed||autoCode(nm);
+ let id=parent?parent+"-"+code:code;
+ if(typed&&chById(id)){addErr="Code "+id+" is already used — pick another.";router();focusAdd(kind);return}
+ id=uniqueId(id);
+ CUSTOM.push({id:id,parent:parent||null,level:parent?"SAC":"AC",name:nm,leaf:true,status:"New",custom:true});
+ saveCh();
+ addErr="";showAddAC=false;showAddSAC=null;
+ if(parent)openChain(id);else openAC.add(id);
+ router();
+}
+function focusAdd(kind){const el=$("#nm-"+kind);if(el)el.focus()}
+function delChannel(id){
+ const c=chById(id);if(!c||!c.custom)return;
+ const gather=x=>{let out=[x];CUSTOM.filter(k=>k.parent===x).forEach(k=>{out=out.concat(gather(k.id))});return out};
+ const doomed=new Set(gather(id));
+ if(!confirm("Remove "+id+" — "+effChName(c)+"?"+(doomed.size>1?" Its added sub-channels go too.":"")))return;
+ CUSTOM=CUSTOM.filter(k=>!doomed.has(k.id));
+ doomed.forEach(d=>{delete CHMETA[d];if(engSel)engSel.delete(d);openAC.delete(d);openSAC.delete(d)});
+ saveCh();saveCM();router();
+}
+function siblingsOf(id){const c=chById(id);if(!c)return[];return c.parent?ordKids(c.parent):ordTops()}
+function renumber(list){list.forEach((c,i)=>{CHMETA[c.id]=CHMETA[c.id]||{};CHMETA[c.id].prio=i+1});saveCM()}
+function setPriority(id,n){
+ const sibs=siblingsOf(id).filter(c=>c.id!==id);
+ const idx=Math.max(0,Math.min(sibs.length,Math.round(n)-1));
+ sibs.splice(idx,0,chById(id));
+ renumber(sibs);
+}
+function moveBefore(dragged,target){
+ if(dragged===target)return;
+ const a=chById(dragged),b=chById(target);
+ if(!a||!b||(a.parent||null)!==(b.parent||null))return;
+ const sibs=siblingsOf(dragged).filter(c=>c.id!==dragged);
+ const idx=sibs.findIndex(c=>c.id===target);
+ sibs.splice(idx<0?sibs.length:idx,0,a);
+ renumber(sibs);
+}
+function saveChEdit(id){
+ const nm=($("#ec-nm")?$("#ec-nm").value:"").trim();
+ const pr=parseInt($("#ec-pr")?$("#ec-pr").value:"",10);
+ if(nm){CHMETA[id]=CHMETA[id]||{};if(nm!==chById(id).name)CHMETA[id].name=nm;else delete CHMETA[id].name}
+ saveCM();
+ if(!isNaN(pr)&&pr>0)setPriority(id,pr);
+ editCh=null;router();
+}
+function saveEngEdit(id){
+ const nm=($("#ee-nm")?$("#ee-nm").value:"").trim();
+ const pp=($("#ee-pp")?$("#ee-pp").value:"").trim();
+ const e=ENGINES.find(x=>x.id===id);if(!e)return;
+ ENGMETA[id]=ENGMETA[id]||{};
+ if(nm&&nm!==e.name)ENGMETA[id].name=nm;else delete ENGMETA[id].name;
+ if(pp&&pp!==e.purpose)ENGMETA[id].purpose=pp;else delete ENGMETA[id].purpose;
+ saveEM();editEng=null;router();
+}
+function saveOwnerEdit(rid){
+ const v=($("#own-in")?$("#own-in").value:"").trim();
+ const row=LEDGER.find(r=>rowId(r)===rid);if(!row)return;
+ if(!v||v===row.owner)delete OWNMAP[rid];else OWNMAP[rid]=v;
+ saveOW();editOwn=null;router();
+}
+function addTeamMember(){
+ const v=($("#tm-in")?$("#tm-in").value:"").trim();
+ if(!v)return;
+ const exists=TEAM.some(t=>t.toLowerCase()===v.toLowerCase())||Object.keys(ownerAgg(LEDGER)).some(o=>o.toLowerCase()===v.toLowerCase());
+ if(!exists)TEAM.push(v);
+ saveTM();router();
+}
+
+/* ---------------- section 1 · analytics ---------------- */
+const METRICS={gtm:["GTM %","52,195,136"],steps:["Steps","240,162,49"],live:["Live","52,195,136"],stop:["Stoppers","229,84,75"]};
+function cellNum(rows){if(metric==="gtm")return gtmPct(rows);if(metric==="steps")return rows.length;if(metric==="live")return counts(rows)["Live"];return rows.filter(r=>r.stop).length}
+function vAnalytics(){
+ const nums=buildNums();
+ const lvs=leafList();
  const stoppers=LEDGER.filter(r=>r.stop);
- const kpi=[
-  ["Affiliate channels", realLeaves.length+" leaves"],
-  ["Sub-engines defined", LEDGER.length],
-  ["Weighted GTM", gtmPct(LEDGER)+"%"],
-  ["Open show stoppers", stoppers.length]
- ];
- let h='<h2>Portfolio dashboard</h2><p class="sub">Every affiliate channel as a 9-station engine line — the sequential flow from acquisition to retention, at a glance.</p>';
- h+='<div class="kpis">'+kpi.map(k=>'<div class="kpi"><div class="n">'+k[1]+'</div><div class="l">'+k[0]+'</div></div>').join('');
- h+='<div class="kpi mark"><div class="n">500 · 500 · 500 recruits<br>6-month POC · 3-month payback</div><div class="l">POC markers (v0)</div></div></div>';
- h+='<div class="sect">Engine lines · E1 → E9</div><div class="lines"><div class="linehead"><div></div>'+ENGINES.map(e=>'<div class="eh" title="'+esc(e.name)+'">'+e.id+'</div>').join('')+'</div>';
+ const liveN=LEDGER.filter(r=>eff(r)==="Live").length;
+ let h='<h2>Analytics</h2><p class="sub">Every metric on the program, engine × affiliate — status, workload, live coverage and stoppers in one grid.</p>';
+ h+='<div class="kpis">'
+  +'<div class="kpi"><div class="n">'+realLeafList().length+'</div><div class="l">Affiliate channels (leaves)</div></div>'
+  +'<div class="kpi"><div class="n">'+LEDGER.length+'</div><div class="l">Sub-engines defined</div></div>'
+  +'<div class="kpi"><div class="n">'+gtmPct(LEDGER)+'%</div><div class="l">Weighted GTM</div></div>'
+  +'<div class="kpi"><div class="n">'+liveN+'</div><div class="l">Steps live</div></div>'
+  +'<div class="kpi"><div class="n"'+(stoppers.length?' style="color:var(--ember)"':'')+'>'+stoppers.length+'</div><div class="l">Open show stoppers</div></div>'
+  +'<div class="kpi mark"><div class="n">500 · 500 · 500 recruits<br>6-month POC · 3-month payback</div><div class="l">POC markers (v0)</div></div></div>';
+ h+='<div class="sect">Engine lines · E1 → E9</div><div class="lines"><div class="linehead"><div></div>'+ENGINES.map(e=>'<div class="eh" title="'+esc(effEng(e).name)+'">'+e.id+'</div>').join('')+'</div>';
  let ai=0;
- leaves.forEach(c=>{
-  h+='<div class="linerow"><div class="chname"><span class="c'+(c.global?' g':'')+'">'+c.id+'</span><span class="n">'+esc(c.name)+'</span></div>';
+ lvs.forEach(c=>{
+  h+='<div class="linerow"><div class="chname"><span class="c'+(c.global?' g':'')+'">'+nums[c.id]+'</span><span class="n" title="'+c.id+'">'+esc(effChName(c))+'</span></div>';
   ENGINES.forEach(e=>{
    const rs=rowsFor(c.id,e.id);
    const gShared=!c.global&&rowsFor("GLOBAL",e.id).length>0;
-   if(!rs.length){h+='<div class="stcell"><button class="station empty anim" style="animation-delay:'+(ai++*12)+'ms" data-go="cockpit/'+c.id+'/'+e.id+'" title="'+c.id+' · '+esc(e.name)+' — no channel-specific steps'+(gShared?' (GLOBAL covers shared steps)':'')+'">·'+ (gShared?'<span class="gdot"></span>':'') +'</button></div>';return}
+   if(!rs.length){h+='<div class="stcell"><button class="station empty anim" style="animation-delay:'+(ai++*12)+'ms" data-go="engines/'+e.id+'/'+c.id+'" title="'+c.id+' · '+esc(effEng(e).name)+' — no channel-specific steps'+(gShared?' (GLOBAL covers shared steps)':'')+'">·'+(gShared?'<span class="gdot"></span>':'')+'</button></div>';return}
    const cc=counts(rs);let dom=0;let best=-1;
    STATUSES.forEach((s,i)=>{if(cc[s]>best||(cc[s]===best&&i>dom)){best=cc[s];dom=cc[s]>0?i:dom}});
    if(cc["Live"]===rs.length)dom=3;
-   h+='<div class="stcell"><button class="station s'+dom+' anim" style="animation-delay:'+(ai++*12)+'ms" data-go="cockpit/'+c.id+'/'+e.id+'" title="'+c.id+' · '+esc(e.name)+' — '+rs.length+' step(s), '+cc["Live"]+' live">'+rs.length+(cc["Live"]>0&&cc["Live"]<rs.length?'<span class="liv"></span>':'')+(gShared?'<span class="gdot"></span>':'')+'</button></div>';
+   h+='<div class="stcell"><button class="station s'+dom+' anim" style="animation-delay:'+(ai++*12)+'ms" data-go="engines/'+e.id+'/'+c.id+'" title="'+c.id+' · '+esc(effEng(e).name)+' — '+rs.length+' step(s), '+cc["Live"]+' live">'+rs.length+(cc["Live"]>0&&cc["Live"]<rs.length?'<span class="liv"></span>':'')+(gShared?'<span class="gdot"></span>':'')+'</button></div>';
   });
   h+='</div>';
  });
@@ -318,7 +650,27 @@ function vDashboard(){
   +'<span><span class="sw" style="background:var(--jade)"></span>Live</span>'
   +'<span><span class="sw" style="border:1px dashed var(--line);background:transparent"></span>No steps yet</span>'
   +'<span><span class="sw" style="background:var(--sky);width:6px;height:6px;border-radius:50%"></span>GLOBAL covers shared steps</span>'
-  +'<span>Click any station to open it in the Cockpit</span></div>';
+  +'<span>Click any station to open it in Engine Analysis</span></div>';
+ h+='<div class="sect">Engine × affiliate matrix</div>';
+ h+='<div class="selrow" role="group" aria-label="Matrix metric">'+Object.keys(METRICS).map(k=>'<button class="'+(metric===k?'on':'')+'" data-metric="'+k+'">'+METRICS[k][0]+'</button>').join('')+'</div>';
+ const col=METRICS[metric][1];
+ let maxV=1;
+ if(metric!=="gtm")lvs.forEach(c=>ENGINES.forEach(e=>{const v=cellNum(rowsFor(c.id,e.id));if(v>maxV)maxV=v}));
+ h+='<div class="panel scroll"><table class="tbl mtx"><thead><tr><th>Channel</th>'+ENGINES.map(e=>'<th style="text-align:center" title="'+esc(effEng(e).name)+'">'+e.id+'</th>').join('')+'<th style="text-align:center">All</th></tr></thead><tbody>';
+ lvs.forEach(c=>{
+  h+='<tr><td class="chcell" style="white-space:nowrap"><span class="numb'+(c.global?' g':'')+'">'+nums[c.id]+'</span> <span class="mut" style="font-size:12px">'+esc(effChName(c))+'</span> <span class="codemini">'+c.id+'</span></td>';
+  ENGINES.forEach(e=>{
+   const rs=rowsFor(c.id,e.id);const v=cellNum(rs);
+   const a=rs.length?(metric==="gtm"?v/100:v/maxV)*.38:0;
+   const cc=counts(rs);
+   h+='<td class="mcell"><button class="cellb" data-go="engines/'+e.id+'/'+c.id+'" style="background:rgba('+col+','+a.toFixed(3)+')" title="'+c.id+' · '+e.id+' — '+rs.length+' steps · '+cc["Live"]+' live · GTM '+gtmPct(rs)+'% · '+rs.filter(r=>r.stop).length+' stoppers">'+(rs.length?(metric==="gtm"?v+"%":v):'<span class="fnt">·</span>')+'</button></td>';
+  });
+  const all=rowsFor(c.id);const av=cellNum(all);
+  h+='<td class="mcell"><button class="cellb" data-go="engines/all/'+c.id+'" style="font-weight:600" title="'+c.id+' across all engines">'+(all.length?(metric==="gtm"?av+"%":av):'<span class="fnt">·</span>')+'</button></td></tr>';
+ });
+ const allIds=lvs.map(c=>c.id);
+ const grand=rowsMany(allIds);
+ h+='</tbody><tfoot><tr><td>All channels</td>'+ENGINES.map(e=>{const rs=rowsMany(allIds,e.id);const v=cellNum(rs);return '<td>'+(rs.length?(metric==="gtm"?v+"%":v):"·")+'</td>'}).join('')+'<td style="font-weight:600">'+(metric==="gtm"?cellNum(grand)+"%":cellNum(grand))+'</td></tr></tfoot></table></div>';
  h+='<div class="sect">Show stopper feed</div><div class="panel feed">';
  if(!stoppers.length)h+='<div class="gap">No stoppers logged.</div>';
  const order={Blocker:0,Risk:1,Watch:2};
@@ -326,123 +678,426 @@ function vDashboard(){
   h+='<div class="step"><div><div class="nm">'+esc(r.stop)+'</div><div class="meta"><span class="mono fnt">'+rowId(r)+'</span><span>'+esc(r.name)+'</span></div></div><div class="right"><span class="sev '+r.sev+'">'+r.sev+'</span></div></div>';
  });
  h+='</div>';
- $("#v-dashboard").innerHTML=h;
+ $("#v-analytics").innerHTML=h;
 }
 
-function vRegistry(){
- let h='<h2>Channel registry</h2><p class="sub">Master AC / SAC registry — owners, program status and rollups. Owners get assigned on Day 1–2 of the build plan.</p>';
- h+='<div class="panel scroll"><table class="tbl"><thead><tr><th>Code</th><th>Channel</th><th>Level</th><th>Legacy</th><th>Owner / POC</th><th>Status</th><th>Steps</th><th>GTM</th><th>Stoppers</th></tr></thead><tbody>';
- CHANNELS.forEach(c=>{
-  const rs=c.leaf?rowsFor(c.id):[];
-  const ind=c.level==="SAC"?"indent1":c.level==="SSC"?"indent2":"";
-  const st=c.leaf?LEDGER.filter(r=>r.ch===c.id&&r.stop).length:"";
-  h+='<tr><td class="mono" style="color:var(--saffron)">'+c.id+'</td>'
-   +'<td class="'+ind+'">'+esc(c.name)+(c.global?' <span class="tag glob">SHARED</span>':'')+'</td>'
-   +'<td class="mono fnt">'+c.level+'</td>'
-   +'<td class="mono fnt">'+(c.legacy||"—")+'</td>'
-   +'<td class="mut">'+(c.leaf?(c.global?"Engine leads":"Unassigned"):"—")+'</td>'
-   +'<td class="mut">'+(c.status||"—")+'</td>'
-   +'<td class="mono">'+(c.leaf?rs.length:"—")+'</td>'
-   +'<td class="mono">'+(c.leaf&&rs.length?gtmPct(rs)+"%":"—")+'</td>'
-   +'<td class="mono" style="color:'+(st>0?"var(--ember)":"var(--faint)")+'">'+(c.leaf?st:"—")+'</td></tr>';
- });
- h+='</tbody></table></div>';
- $("#v-registry").innerHTML=h;
-}
-
-function vCockpit(sel){
- sel=chById(sel)?sel:"SP-PHY";
- let h='<h2>Channel cockpit</h2><p class="sub">One channel, end to end across all 9 engines. Shared GLOBAL machinery appears dashed so channel-specific work reads clearly.</p>';
- h+='<div class="selrow">'+leaves.map(c=>'<button class="'+(c.id===sel?"on ":"")+(c.global?"gsel":"")+'" data-go="cockpit/'+c.id+'">'+c.id+'</button>').join('')+'</div>';
- const c=chById(sel);
- const own=rowsFor(sel);
- h+='<div class="kpis"><div class="kpi"><div class="n">'+esc(c.name)+'</div><div class="l mono">'+c.id+(c.legacy?' · legacy '+c.legacy:'')+'</div></div>'
-  +'<div class="kpi"><div class="n">'+own.length+'</div><div class="l">Channel-specific steps</div></div>'
-  +'<div class="kpi"><div class="n">'+gtmPct(own)+'%</div><div class="l">Weighted GTM (own steps)</div></div>'
-  +'<div class="kpi"><div class="n">'+own.filter(r=>r.stop).length+'</div><div class="l">Stoppers on this channel</div></div></div>';
- h+='<div style="height:10px"></div>';
+/* ---------------- section 2 · affiliate channels ---------------- */
+function stepsByEngine(cid){
+ let h='';
  ENGINES.forEach(e=>{
-  const mine=rowsFor(sel,e.id);
-  const glob=c.global?[]:rowsFor("GLOBAL",e.id);
-  h+='<div class="eng" id="eng-'+e.id+'"><div class="eh2"><span class="eid">'+e.id+'</span><span class="enm">'+esc(e.name)+'</span><span class="ecnt">'+mine.length+' own'+(glob.length?' · '+glob.length+' shared':'')+'</span></div>';
-  if(!mine.length&&!glob.length)h+='<div class="gap"><b>Coverage gap</b> — no steps defined for this engine yet.</div>';
-  mine.concat(glob).forEach(r=>{
-   const shared=r.ch==="GLOBAL"&&!c.global;
-   h+='<div class="step"'+(shared?' style="opacity:.72"':'')+'><div class="sq">'+String(r.seq).padStart(2,"0")+'</div>'
-    +'<div><div class="nm">'+esc(r.name)+(shared?' <span class="tag glob">GLOBAL</span>':'')+'</div>'
-    +'<div class="meta">'
-    +'<span><b>Owner</b> '+esc(r.owner)+'</span>'
-    +(r.poc?'<span><b>POC tool</b> '+esc(r.poc)+'</span>':'')
-    +(r.scaled?'<span><b>Scaled tool</b> '+esc(r.scaled)+'</span>':'')
-    +(r.data?'<span><b>Data</b> '+esc(r.data)+'</span>':'')
-    +'</div>'
-    +(r.stop?'<div class="stop"><span class="sev '+r.sev+'">'+r.sev+'</span>'+esc(r.stop)+'</div>':'')
-    +'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>';
-  });
-  h+='</div>';
+  const rs=rowsFor(cid,e.id);if(!rs.length)return;
+  h+='<div class="sengine"><span class="eid">'+e.id+'</span> '+esc(effEng(e).name)+'</div>';
+  rs.forEach(r=>{h+='<div class="step"><div class="sq">'+pad2(r.seq)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>'});
  });
- $("#v-cockpit").innerHTML=h;
+ return h||'<div class="gap">No steps defined for this channel yet — they land here once scoped.</div>';
+}
+function addFormHTML(kind,parent){
+ const isAC=kind==="ac";
+ return '<div class="addform">'
+  +'<input id="nm-'+kind+'" placeholder="'+(isAC?'Affiliate channel name':'Sub-affiliate channel name')+'" maxlength="60" aria-label="Channel name">'
+  +'<input id="cd-'+kind+'" class="code" placeholder="CODE (auto)" maxlength="6" aria-label="Channel code">'
+  +'<button class="go" data-save'+kind+'="'+(parent||'')+'">Add '+(isAC?'AC':'SAC')+'</button>'
+  +'<button class="xall" data-canceladd>Cancel</button>'
+  +(addErr?'<span class="err">'+esc(addErr)+'</span>':'')
+  +'</div>';
+}
+function editFormHTML(c,num){
+ return '<div class="editrow">'
+  +'<span class="lbl">EDIT</span>'
+  +'<input id="ec-nm" value="'+esc(effChName(c))+'" maxlength="60" aria-label="Channel name" style="min-width:220px">'
+  +'<span class="lbl">PRIORITY</span>'
+  +'<input id="ec-pr" class="num" type="number" min="1" max="99" value="'+num+'" aria-label="Priority number">'
+  +'<button class="go" data-ecsave="'+c.id+'">Save</button>'
+  +'<button class="xall" data-eccancel>Cancel</button>'
+  +'<span class="codemini">'+c.id+'</span>'
+  +'</div>';
+}
+function headIcons(c){
+ return '<button class="hicon" data-ecedit="'+c.id+'" title="Edit name / priority">✎</button>'
+  +(c.custom?'<button class="delx" data-del="'+c.id+'" title="Remove this added channel">×</button>':'');
+}
+function renderSub(c,nums){
+ const isOpen=openSAC.has(c.id)||editCh===c.id;
+ const kids=ordKids(c.id);
+ const rows=rowsMany(leafUnder(c.id).map(x=>x.id));
+ const num=nums[c.id];
+ let h='<div class="acc sac'+(isOpen?' open':'')+'" id="ch-'+c.id+'">'
+  +'<div class="acc-head" draggable="true" data-drag="'+c.id+'"><span class="grip" title="Drag to reorder">⠿</span><button class="hmain" data-tglsac="'+c.id+'" aria-expanded="'+isOpen+'"><span class="chev">▸</span><span class="numb">'+num+'</span><span class="anm">'+esc(effChName(c))+'</span>'+chTag(c)+' <span class="codemini">'+c.id+'</span></button>'
+  +'<span class="astat">'+(kids.length?kids.length+' sub · ':'')+rows.length+' steps · '+gtmPct(rows)+'%</span>'
+  +headIcons(c)
+  +'</div><div class="acc-body">'
+  +(editCh===c.id?editFormHTML(c,num.split(".").pop()):'')
+  +(c.leaf?stepsByEngine(c.id):'')
+  +(kids.length?'<div class="sacblock">'+kids.map(k=>renderSub(k,nums)).join('')+'</div>':'')
+  +'</div></div>';
+ return h;
+}
+function renderAC(c,nums){
+ const isOpen=openAC.has(c.id)||editCh===c.id;
+ const kids=ordKids(c.id);
+ const rows=rowsMany(leafUnder(c.id).map(x=>x.id));
+ const d=nDesc(c.id);
+ const num=nums[c.id]||"";
+ return '<div class="acc'+(isOpen?' open':'')+'" id="ch-'+c.id+'">'
+  +'<div class="acc-head"'+(c.global?'':' draggable="true" data-drag="'+c.id+'"')+'>'
+  +(c.global?'':'<span class="grip" title="Drag to reorder">⠿</span>')
+  +'<button class="hmain" data-tglac="'+c.id+'" aria-expanded="'+isOpen+'"'+(c.global?' style="padding-left:16px"':'')+'><span class="chev">▸</span><span class="numb'+(c.global?' g':'')+'">'+(c.global?"G":num)+'</span><span class="anm">'+esc(effChName(c))+'</span>'+(c.global?'<span class="tag glob">SHARED</span>':chTag(c))+' <span class="codemini">'+c.id+'</span></button>'
+  +'<span class="astat">'+(c.global?'':(d?d+' SAC · ':''))+statLine(rows)+'</span>'
+  +(c.global?'':headIcons(c))
+  +'</div><div class="acc-body">'
+  +(editCh===c.id?editFormHTML(c,num):'')
+  +(c.leaf?stepsByEngine(c.id):'')
+  +(kids.length?'<div class="sacblock">'+kids.map(k=>renderSub(k,nums)).join('')+'</div>':'')
+  +(c.global?'':(showAddSAC===c.id?addFormHTML("sac",c.id):'<button class="addbtn sm" data-showaddsac="'+c.id+'">＋ Add SAC</button>'))
+  +'</div></div>';
+}
+function vChannels(){
+ const nums=buildNums();
+ let h='<h2>Affiliate channels</h2><p class="sub">The AC / SAC registry, priority-ordered. Drag ⠿ to reorder (priorities renumber automatically), ✎ to edit a name or set a priority number directly. Additions and edits are saved in this browser.</p>';
+ h+=showAddAC?addFormHTML("ac",null):'<button class="addbtn" data-showaddac style="margin-bottom:16px">＋ Add Affiliate Channel</button>';
+ const g=chById("GLOBAL");
+ if(g)h+=renderAC(g,nums);
+ ordTops().forEach(c=>{h+=renderAC(c,nums)});
+ $("#v-channels").innerHTML=h;
 }
 
-function vLens(sel){
- sel=ENGINES.some(e=>e.id===sel)?sel:"E1";
- const e=ENGINES.find(x=>x.id===sel);
- let h='<h2>Engine lens</h2><p class="sub">One engine compared across every channel — where it is defined, where it is live, and where the gaps are.</p>';
- h+='<div class="selrow">'+ENGINES.map(x=>'<button class="'+(x.id===sel?"on":"")+'" data-go="lens/'+x.id+'" title="'+esc(x.name)+'">'+x.id+'</button>').join('')+'</div>';
- h+='<div class="kpis"><div class="kpi"><div class="n">'+esc(e.name)+'</div><div class="l">'+esc(e.purpose)+'</div></div></div><div style="height:6px"></div>';
- const missing=realLeaves.filter(c=>rowsFor(c.id,sel).length===0);
- const globN=rowsFor("GLOBAL",sel).length;
- if(missing.length)h+='<div class="covergap"><b style="color:var(--ember)">Coverage gaps:</b> '+missing.map(c=>c.id).join(", ")+' have no channel-specific steps for '+sel+(globN?' — GLOBAL covers '+globN+' shared step(s), confirm whether that is sufficient per channel.':'.')+'</div>';
- else h+='<div class="coverok">All channels covered for '+sel+'.</div>';
- h+='<div class="panel">';
- leaves.forEach(c=>{
-  const rs=rowsFor(c.id,sel);
-  const cc=counts(rs);const tot=rs.length||1;
-  h+='<div class="lensrow"><div class="chname"><span class="c'+(c.global?" g":"")+'">'+c.id+'</span><span class="n mut">'+esc(c.name)+'</span></div>';
-  if(!rs.length){h+='<div class="fnt" style="font-size:12.5px">no steps</div><div></div></div>';return}
-  h+='<div class="bar" title="'+STATUSES.map(s=>s+": "+cc[s]).join(" · ")+'">'
-   +'<i style="width:'+(100*cc["Live"]/tot)+'%;background:var(--jade)"></i>'
-   +'<i style="width:'+(100*cc["Testable"]/tot)+'%;background:var(--sky)"></i>'
-   +'<i style="width:'+(100*cc["In build"]/tot)+'%;background:var(--saffron)"></i>'
-   +'</div><div class="mono" style="text-align:right">'+rs.length+'</div></div>';
+/* ---------------- section 3 · engine analysis ---------------- */
+function famState(ids){const sel=new Set(selLeaves().map(c=>c.id));const on=ids.filter(i=>sel.has(i)).length;return on===0?"off":on===ids.length?"on":"part"}
+function engStep(r,withCh,nums){
+ if(withCh)return '<div class="step" style="grid-template-columns:72px 1fr auto"><div class="mono" style="color:var(--'+(r.ch==="GLOBAL"?'sky':'saffron')+');font-size:11px;padding-top:3px" title="'+r.ch+'">'+(nums[r.ch]||r.ch)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>';
+ return '<div class="step"><div class="sq">'+pad2(r.seq)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>';
+}
+function dropPanel(nums){
+ let h='<div class="droppanel" id="chdroppanel">';
+ h+='<div class="drophead">Shared</div>';
+ const gOn=famState(["GLOBAL"])==="on";
+ h+='<label class="ckrow"><input type="checkbox" data-leaf-ck="GLOBAL"'+(gOn?' checked':'')+'><span class="numb g">G</span> Global · shared platform steps</label>';
+ h+='<div class="drophead">Affiliate channels</div>';
+ ordTops().forEach(t=>{
+  const lu=leafUnder(t.id).map(x=>x.id);
+  const st=famState(lu);
+  h+='<label class="ckrow"><input type="checkbox" data-fam-ck="'+t.id+'"'+(st==="on"?' checked':'')+(st==="part"?' data-ind="1"':'')+'><span class="numb">'+nums[t.id]+'</span> <b>'+esc(effChName(t))+'</b><span class="codemini">'+t.id+'</span></label>';
+  const walk=(kids,depth)=>{kids.forEach(k=>{
+   if(k.leaf){const on=famState([k.id])==="on";
+    h+='<label class="ckrow '+(depth>1?'sub2':'sub')+'"><input type="checkbox" data-leaf-ck="'+k.id+'"'+(on?' checked':'')+'><span class="numb">'+nums[k.id]+'</span> '+esc(effChName(k))+'<span class="codemini">'+k.id+'</span></label>';
+   }else{const st2=famState(leafUnder(k.id).map(x=>x.id));
+    h+='<label class="ckrow '+(depth>1?'sub2':'sub')+'"><input type="checkbox" data-fam-ck="'+k.id+'"'+(st2==="on"?' checked':'')+(st2==="part"?' data-ind="1"':'')+'><span class="numb">'+nums[k.id]+'</span> <b>'+esc(effChName(k))+'</b><span class="codemini">'+k.id+'</span></label>';
+   }
+   walk(ordKids(k.id),depth+1);
+  })};
+  walk(ordKids(t.id),1);
  });
- h+='</div><div class="sect">All steps for '+sel+'</div><div class="panel">';
- let any=false;
- leaves.forEach(c=>{
-  rowsFor(c.id,sel).forEach(r=>{any=true;
-   h+='<div class="step" style="grid-template-columns:110px 1fr auto"><div class="mono" style="color:var(--saffron);font-size:11px;padding-top:3px">'+r.ch+'</div>'
-    +'<div><div class="nm">'+esc(r.name)+'</div><div class="meta"><span><b>Owner</b> '+esc(r.owner)+'</span>'+(r.poc?'<span><b>POC tool</b> '+esc(r.poc)+'</span>':'')+(r.data?'<span><b>Data</b> '+esc(r.data)+'</span>':'')+'</div>'
-    +(r.stop?'<div class="stop"><span class="sev '+r.sev+'">'+r.sev+'</span>'+esc(r.stop)+'</div>':'')
-    +'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>';
-  });
- });
- if(!any)h+='<div class="gap">Nothing defined anywhere for this engine yet.</div>';
+ h+=(selWarn?'<div class="selwarn">At least one SAC must stay selected — all or some, per AC.</div>':'<div class="selwarn" style="color:var(--faint)">Rule: keep SACs selected — all or some; never none.</div>');
+ h+='<div style="display:flex;gap:8px;padding:8px"><button class="xall" data-fall>Select all</button><button class="xall" data-dropclose>Done</button></div>';
  h+='</div>';
- $("#v-lens").innerHTML=h;
+ return h;
+}
+function vEngines(){
+ const nums=buildNums();
+ const sel=selLeaves();
+ const selIds=sel.map(c=>c.id);
+ let h='<h2>Engine analysis</h2><p class="sub">E1 → E9, each engine its own drop-down with verdicts, blockers, owners and tools — analysed for the affiliate channels you pick.</p>';
+ h+='<div class="panel fbar"><div class="fbar-top"><span class="fl">AC · SAC FILTER</span>'
+  +'<span class="droproot" data-droproot><button class="dropbtn" data-droptgl aria-expanded="'+dropOpen+'">Channels · '+sel.length+' selected <span class="chev">▼</span></button>'
+  +(dropOpen?dropPanel(nums):'')
+  +'</span>'
+  +'<button class="fchip'+(engSel===null?' on':'')+'" data-fall title="Select every channel">ALL</button>'
+  +'<span class="modetog" role="group" aria-label="View modes"><button class="'+(modeC?'on':'')+'" data-mode="combined" title="Aggregate the selected channels — click to select / de-select">Combined</button><button class="'+(modeS?'on':'')+'" data-mode="separate" title="Break out per channel — click to select / de-select">Separated</button></span></div>';
+ h+='<div class="mini" style="padding:0 2px">'+sel.slice(0,14).map(c=>'<span class="numb'+(c.global?' g':'')+'" style="margin:0 4px 4px 0" title="'+esc(effChName(c))+'">'+nums[c.id]+'</span>').join('')+(sel.length>14?'<span class="codemini">+'+(sel.length-14)+' more</span>':'')+'</div>';
+ h+='</div>';
+ h+='<div class="sect" style="display:flex;align-items:center;gap:8px">Engines · '+sel.length+' channel'+(sel.length!==1?'s':'')+' selected · '+(modeC&&modeS?'combined + separated':modeC?'combined':'separated')+'<span style="margin-left:auto;display:flex;gap:8px"><button class="xall" data-xall="open">Expand all</button><button class="xall" data-xall="close">Collapse all</button></span></div>';
+ if(!sel.length)h+='<div class="panel"><div class="gap"><b>No channels selected.</b> Open the Channels drop-down above.</div></div>';
+ ENGINES.forEach(e=>{
+  const ee=effEng(e);
+  const rows=rowsMany(selIds,e.id);
+  const isOpen=openENG.has(e.id);
+  const tab=engTabs[e.id]||"steps";
+  h+='<div class="eng'+(isOpen?' open':'')+'" id="eng-'+e.id+'">'
+   +'<button class="eh2 eh2but" data-tgleng="'+e.id+'" aria-expanded="'+isOpen+'"><span class="chev">▸</span><span class="eid">'+e.id+'</span><span class="enm">'+esc(ee.name)+'</span>'+verdPill(e.id)+'<span class="ecnt">'+(rows.length?statLine(rows):'no steps in selection')+'</span>'+barHTML(rows,120)+'</button>'
+   +'<div class="engbody">';
+  /* verdict + remark + edit */
+  if(editEng===e.id){
+   h+='<div class="editrow"><span class="lbl">EDIT '+e.id+'</span>'
+    +'<input id="ee-nm" value="'+esc(ee.name)+'" maxlength="60" style="min-width:200px" aria-label="Engine name">'
+    +'<input id="ee-pp" value="'+esc(ee.purpose)+'" maxlength="140" style="flex:1;min-width:240px" aria-label="Engine purpose">'
+    +'<button class="go" data-eesave="'+e.id+'">Save</button><button class="xall" data-eecancel>Cancel</button></div>';
+  }else{
+   h+='<div class="vrow"><span class="codemini">VERDICT</span>'
+    +'<select class="vsel" data-verdict="'+e.id+'" aria-label="Engine verdict">'
+    +'<option value=""'+(ee.verdict?'':' selected')+'>— no verdict</option>'
+    +'<option value="go"'+(ee.verdict==="go"?' selected':'')+'>🟢 Go Ahead</option>'
+    +'<option value="pend"'+(ee.verdict==="pend"?' selected':'')+'>🟡 Pending</option>'
+    +'<option value="stop"'+(ee.verdict==="stop"?' selected':'')+'>🔴 Showstopper</option>'
+    +'</select>'
+    +'<input class="rem" data-remark="'+e.id+'" value="'+esc(ee.remark)+'" placeholder="Remark — why complete / incomplete…" maxlength="180" aria-label="Engine remark">'
+    +'<button class="hicon" data-eeedit="'+e.id+'" title="Edit engine name & purpose">✎</button></div>';
+   h+='<div class="purp">'+esc(ee.purpose)+'</div>';
+  }
+  /* sub-tabs */
+  const tabs=[["steps","Steps"],["blockers","Blockers"],["owners","Owners"],["tools","Tools"]];
+  h+='<div class="etabs">'+tabs.map(t=>'<button class="'+(tab===t[0]?'on':'')+'" data-etab="'+e.id+':'+t[0]+'">'+t[1]+'</button>').join('')+'</div>';
+  if(!rows.length){h+='<div class="gap"><b>Coverage gap</b> — nothing defined for '+e.id+' in the current selection.</div>'}
+  else if(tab==="steps"){
+   if(modeC){
+    h+='<div class="combar">'+barHTML(rows,220)+'<span class="mono fnt" style="font-size:11px">'+statLine(rows)+'</span></div>';
+    rows.forEach(r=>{h+=engStep(r,true,nums)});
+   }
+   if(modeS){
+    if(modeC)h+='<div class="divline">Per channel</div>';
+    const none=[];
+    sel.forEach(c=>{
+     const rs=rowsFor(c.id,e.id);
+     if(!rs.length){none.push(nums[c.id]||c.id);return}
+     h+='<div class="subch"><span class="numb'+(c.global?' g':'')+'">'+nums[c.id]+'</span><span>'+esc(effChName(c))+'</span><span class="codemini">'+c.id+'</span>'+barHTML(rs,120)+'<span class="cnt">'+rs.length+' steps · '+gtmPct(rs)+'%</span></div>';
+     rs.forEach(r=>{h+=engStep(r,false,nums)});
+    });
+    if(none.length)h+='<div class="gap">No steps here for: <span class="mono">'+none.join(", ")+'</span></div>';
+   }
+  }
+  else if(tab==="blockers"){
+   const st=rows.filter(r=>r.stop);
+   if(!st.length)h+='<div class="gap">No blockers logged for '+e.id+' in the current selection.</div>';
+   const order={Blocker:0,Risk:1,Watch:2};
+   st.slice().sort((a,b)=>(order[a.sev]??3)-(order[b.sev]??3)).forEach(r=>{
+    h+='<div class="step" style="grid-template-columns:72px 1fr auto"><div class="mono" style="color:var(--saffron);font-size:11px;padding-top:3px">'+(nums[r.ch]||r.ch)+'</div><div><div class="nm">'+esc(r.stop)+'</div><div class="meta"><span class="mono fnt">'+rowId(r)+'</span><span>'+esc(r.name)+'</span><span><b>Owner</b> '+esc(effOwner(r))+'</span></div></div><div class="right"><span class="sev '+r.sev+'">'+r.sev+'</span>'+statChip(r)+'</div></div>';
+   });
+  }
+  else if(tab==="owners"){
+   const ag=ownerAgg(rows);const keys=Object.keys(ag).sort((a,b)=>ag[b].rows.length-ag[a].rows.length);
+   if(!keys.length)h+='<div class="gap">No owners on '+e.id+' steps in the current selection.</div>';
+   keys.forEach(o=>{const g=ag[o];
+    h+='<div class="subch"><span'+(o==="Unassigned"?' style="color:var(--saffron)"':'')+'><b>'+esc(o)+'</b></span>'+barHTML(g.rows,120)+'<span class="cnt">'+g.rows.length+' steps'+(g.stoppers?' · <span style="color:var(--ember)">'+g.stoppers+' stopper'+(g.stoppers>1?'s':'')+'</span>':'')+'</span></div>';
+    g.rows.forEach(r=>{h+='<div class="miniline" style="padding:5px 16px"><span class="mono fnt">'+(nums[r.ch]||r.ch)+'</span><span>'+esc(r.name)+'</span><span style="margin-left:auto">'+statChip(r)+'</span></div>'});
+   });
+  }
+  else if(tab==="tools"){
+   const ag=toolAgg(rows);
+   if(!ag.length)h+='<div class="gap">No tools recorded on '+e.id+' steps in the current selection.</div>';
+   ag.forEach(t=>{
+    h+='<div class="subch"><span><b>'+esc(t.tool)+'</b></span><span class="codemini">'+[...t.kinds].join(" · ")+'</span>'+barHTML(t.rows,120)+'<span class="cnt">'+t.rows.length+' steps · '+[...t.channels].length+' channels</span></div>';
+    t.rows.forEach(r=>{h+='<div class="miniline" style="padding:5px 16px"><span class="mono fnt">'+(nums[r.ch]||r.ch)+'</span><span>'+esc(r.name)+'</span><span style="margin-left:auto">'+statChip(r)+'</span></div>'});
+   });
+  }
+  h+='</div></div>';
+ });
+ $("#v-engines").innerHTML=h;
+ document.querySelectorAll('#v-engines [data-ind]').forEach(el=>{el.indeterminate=true});
+}
+
+/* ---------------- section 4 · tools ---------------- */
+function vTools(){
+ const nums=buildNums();
+ const ag=toolAgg(LEDGER);
+ const withTool=new Set();ag.forEach(t=>t.rows.forEach(r=>withTool.add(rowId(r))));
+ const noTool=LEDGER.filter(r=>!withTool.has(rowId(r)));
+ const q=toolQ.trim().toLowerCase();
+ const shown=q?ag.filter(t=>t.tool.toLowerCase().includes(q)):ag;
+ let h='<h2>Tools</h2><p class="sub">Every tool garnered from every step across all engines and channels — where it runs, what state it is in, and where tooling is still missing.</p>';
+ h+='<div class="kpis">'
+  +'<div class="kpi"><div class="n">'+ag.length+'</div><div class="l">Distinct tools</div></div>'
+  +'<div class="kpi"><div class="n">'+withTool.size+'</div><div class="l">Steps with a tool</div></div>'
+  +'<div class="kpi"><div class="n"'+(noTool.length?' style="color:var(--saffron)"':'')+'>'+noTool.length+'</div><div class="l">Steps with no tool yet</div></div>'
+  +'<div class="kpi"><div class="n">'+ag.filter(t=>t.kinds.has("Scaled")).length+'</div><div class="l">Tools tagged for scale</div></div></div>';
+ h+='<div style="margin:6px 0 14px"><input class="srch" data-toolq value="'+esc(toolQ)+'" placeholder="Filter tools… (Enter)" aria-label="Filter tools"></div>';
+ h+='<div class="cards">';
+ shown.forEach(t=>{
+  h+='<div class="card"><div class="chead"><span class="tname">'+esc(t.tool)+'</span><span class="cnt">'+t.rows.length+' steps · '+[...t.engines].sort().join(" ")+'</span></div><div class="cbody">'
+   +barHTML(t.rows)+'<div class="mini" style="margin:6px 0 4px">'+[...t.kinds].join(" + ")+' · '+[...t.channels].length+' channel(s)</div>';
+  t.rows.forEach(r=>{h+='<div class="miniline"><span class="mono fnt" title="'+r.ch+'">'+(nums[r.ch]||r.ch)+'</span><span class="mono fnt">'+r.eng+'</span><span>'+esc(r.name)+'</span><span style="margin-left:auto">'+statChip(r)+'</span></div>'});
+  h+='</div></div>';
+ });
+ if(!shown.length)h+='<div class="panel" style="grid-column:1/-1"><div class="gap">No tools match that filter.</div></div>';
+ h+='</div>';
+ h+='<div class="sect">Steps with no tool yet</div><div class="panel">';
+ if(!noTool.length)h+='<div class="gap">Every step has a tool attached.</div>';
+ noTool.forEach(r=>{h+='<div class="miniline" style="padding:8px 16px"><span class="mono fnt" title="'+r.ch+'">'+(nums[r.ch]||r.ch)+'</span><span class="mono fnt">'+r.eng+'</span><span>'+esc(r.name)+'</span><span style="margin-left:auto">'+statChip(r)+'</span></div>'});
+ h+='</div>';
+ $("#v-tools").innerHTML=h;
+}
+
+/* ---------------- section 5 · team ---------------- */
+function vTeam(){
+ const nums=buildNums();
+ const ag=ownerAgg(LEDGER);
+ TEAM.forEach(t=>{if(!ag[t])ag[t]={owner:t,rows:[],engines:new Set(),stoppers:0}});
+ if(!ag["Unassigned"])ag["Unassigned"]={owner:"Unassigned",rows:[],engines:new Set(),stoppers:0};
+ const keys=Object.keys(ag).sort((a,b)=>{
+  if(a==="Unassigned")return 1;if(b==="Unassigned")return -1;
+  return ag[b].rows.length-ag[a].rows.length||a.localeCompare(b);
+ });
+ const named=keys.filter(k=>k!=="Unassigned");
+ const un=ag["Unassigned"];
+ const maxLoad=Math.max(1,...named.map(k=>ag[k].rows.length));
+ const assigned=LEDGER.filter(r=>{const o=effOwner(r);return o!=="Unassigned"&&o!=="—"}).length;
+ const assignable=LEDGER.filter(r=>effOwner(r)!=="—").length;
+ let h='<h2>Team</h2><p class="sub">Every owner garnered from every step — load, status and blockers per person, for bandwidth management. Click ✎ on a step to (re)assign it; edits stay in this browser.</p>';
+ h+='<div class="kpis">'
+  +'<div class="kpi"><div class="n">'+named.length+'</div><div class="l">Team members tracked</div></div>'
+  +'<div class="kpi"><div class="n">'+Math.round(100*assigned/Math.max(1,assignable))+'%</div><div class="l">Steps assigned</div></div>'
+  +'<div class="kpi"><div class="n"'+(un.rows.length?' style="color:var(--saffron)"':'')+'>'+un.rows.length+'</div><div class="l">Unassigned steps</div></div>'
+  +'<div class="kpi"><div class="n">'+(named.length?esc(named[0])+' · '+ag[named[0]].rows.length:'—')+'</div><div class="l">Heaviest load</div></div></div>';
+ h+='<div class="addform" style="margin:6px 0 16px"><input id="tm-in" placeholder="Add team member by name…" maxlength="40" aria-label="Team member name"><button class="go" data-tmadd>Add member</button><span class="codemini">members with zero steps = free bandwidth</span></div>';
+ h+='<div class="cards">';
+ keys.forEach(k=>{
+  const g=ag[k];const isUn=k==="Unassigned";
+  h+='<div class="card"'+(isUn?' style="border-color:rgba(240,162,49,.45)"':'')+'><div class="chead"><span class="tname"'+(isUn?' style="color:var(--saffron)"':'')+'>'+esc(k)+'</span><span class="cnt">'+g.rows.length+' steps'+(g.stoppers?' · '+g.stoppers+' stopper'+(g.stoppers>1?'s':''):'')+'</span></div><div class="cbody">';
+  if(!isUn)h+='<div class="loadbar" title="Load vs heaviest"><i style="width:'+(100*g.rows.length/maxLoad)+'%"></i></div>';
+  if(g.rows.length)h+=barHTML(g.rows)+'<div class="mini" style="margin:6px 0 4px">'+[...g.engines].sort().join(" · ")+'</div>';
+  else h+='<div class="mini" style="margin:2px 0 4px">'+(isUn?'Nothing unassigned — all covered.':'No steps yet — free bandwidth.')+'</div>';
+  g.rows.forEach(r=>{
+   const rid=rowId(r);
+   if(editOwn===rid){
+    h+='<div class="miniline"><input id="own-in" class="ownin" value="'+esc(effOwner(r)==="Unassigned"?"":effOwner(r))+'" placeholder="Owner name" aria-label="Owner name"><button class="go" style="border-radius:7px;padding:4px 10px;font-size:12px;background:var(--saffron);color:var(--ink)" data-ownsave="'+rid+'">Save</button><button class="xall" data-owncancel>✕</button><span class="codemini">'+rid+'</span></div>';
+   }else{
+    h+='<div class="miniline"><span class="mono fnt" title="'+r.ch+'">'+(nums[r.ch]||r.ch)+'</span><span class="mono fnt">'+r.eng+'</span><span>'+esc(r.name)+'</span><span style="margin-left:auto;display:inline-flex;gap:6px;align-items:center">'+(OWNMAP[rid]?'<span class="codemini" title="Reassigned locally">✱</span>':'')+statChip(r)+'<button class="hicon" data-ownedit="'+rid+'" title="Assign / reassign owner">✎</button></span></div>';
+   }
+  });
+  h+='</div></div>';
+ });
+ h+='</div>';
+ $("#v-team").innerHTML=h;
 }
 
 /* ---------------- router ---------------- */
+let appliedHash=null;
 function router(){
- const parts=(location.hash.replace(/^#\/?/,"")||"dashboard").split("/");
- const view=["dashboard","registry","cockpit","lens"].includes(parts[0])?parts[0]:"dashboard";
+ let parts=(location.hash.replace(/^#\/?/,"")||"analytics").split("/");
+ if(parts[0]==="dashboard")parts=["analytics"];
+ if(parts[0]==="registry")parts=["channels"];
+ if(parts[0]==="lens")parts=["engines",parts[1]];
+ if(parts[0]==="cockpit")parts=parts[2]?["engines",parts[2],parts[1]]:["channels",parts[1]];
+ const view=["analytics","channels","engines","tools","team"].includes(parts[0])?parts[0]:"analytics";
+ const fresh=location.hash!==appliedHash;appliedHash=location.hash;
+ if(fresh&&view==="engines"){
+  if(parts[1]&&ENGINES.some(e=>e.id===parts[1]))openENG.add(parts[1]);
+  if(parts[2]&&chById(parts[2]))engSel=new Set(leafUnder(parts[2]).map(c=>c.id));
+ }
+ if(fresh&&view==="channels"&&parts[1]&&chById(parts[1])){
+  openChain(parts[1]);
+  const c=chById(parts[1]);
+  if(c.parent)openSAC.add(c.id);else openAC.add(c.id);
+ }
  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===view));
  document.querySelectorAll(".view").forEach(v=>v.classList.remove("on"));
  $("#v-"+view).classList.add("on");
- if(view==="dashboard")vDashboard();
- if(view==="registry")vRegistry();
- if(view==="cockpit")vCockpit(parts[1]);
- if(view==="lens")vLens(parts[1]);
- if(view==="cockpit"&&parts[2]){const el=document.getElementById("eng-"+parts[2]);if(el)setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),60)}
+ if(view==="analytics")vAnalytics();
+ if(view==="channels")vChannels();
+ if(view==="engines")vEngines();
+ if(view==="tools")vTools();
+ if(view==="team")vTeam();
+ if(fresh){
+  let target=null;
+  if(view==="engines"&&parts[1]&&ENGINES.some(e=>e.id===parts[1]))target="eng-"+parts[1];
+  if(view==="channels"&&parts[1]&&chById(parts[1]))target="ch-"+parts[1];
+  if(target){const el=document.getElementById(target);if(el)setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),60)}
+ }
+ const rb=$("#resetChBtn");if(rb)rb.style.display=CUSTOM.length?"":"none";
 }
+
+/* ---------------- events ---------------- */
 document.addEventListener("click",ev=>{
- const go=ev.target.closest("[data-go]");
- if(go){location.hash="#/"+go.dataset.go;return}
- const nv=ev.target.closest("nav button");
- if(nv){location.hash="#/"+nv.dataset.v;return}
- const cyc=ev.target.closest("[data-cyc]");
- if(cyc){const r=LEDGER.find(x=>rowId(x)===cyc.dataset.cyc);if(r)cycle(r)}
+ const t=ev.target;
+ let needClose=false;
+ if(dropOpen&&!t.closest("[data-droproot]")){dropOpen=false;needClose=true}
+ const go=t.closest("[data-go]");if(go){const h2="#/"+go.dataset.go;if(location.hash===h2)router();else location.hash=h2;return}
+ const nv=t.closest("nav button");if(nv){const h2="#/"+nv.dataset.v;if(location.hash===h2)router();else location.hash=h2;return}
+ const cyc=t.closest("[data-cyc]");if(cyc){const r=LEDGER.find(x=>rowId(x)===cyc.dataset.cyc);if(r)cycle(r);return}
+ const tac=t.closest("[data-tglac]");if(tac){const id=tac.dataset.tglac;if(openAC.has(id))openAC.delete(id);else openAC.add(id);router();return}
+ const tsc=t.closest("[data-tglsac]");if(tsc){const id=tsc.dataset.tglsac;if(openSAC.has(id))openSAC.delete(id);else openSAC.add(id);router();return}
+ const ten=t.closest("[data-tgleng]");if(ten){const id=ten.dataset.tgleng;if(openENG.has(id))openENG.delete(id);else openENG.add(id);router();return}
+ const mt=t.closest("[data-metric]");if(mt){metric=mt.dataset.metric;router();return}
+ const md=t.closest("[data-mode]");if(md){
+  if(md.dataset.mode==="combined"){modeC=!modeC;if(!modeC&&!modeS)modeS=true}
+  else{modeS=!modeS;if(!modeC&&!modeS)modeC=true}
+  router();return}
+ const dtg=t.closest("[data-droptgl]");if(dtg){dropOpen=!dropOpen;selWarn=false;router();return}
+ if(t.closest("[data-dropclose]")){dropOpen=false;router();return}
+ if(t.closest("[data-fall]")){engSel=null;selWarn=false;router();return}
+ const xa=t.closest("[data-xall]");if(xa){if(xa.dataset.xall==="open")ENGINES.forEach(e=>openENG.add(e.id));else openENG.clear();router();return}
+ const et=t.closest("[data-etab]");if(et){const p=et.dataset.etab.split(":");engTabs[p[0]]=p[1];router();return}
+ if(t.closest("[data-showaddac]")){showAddAC=true;showAddSAC=null;editCh=null;addErr="";router();focusAdd("ac");return}
+ const sas=t.closest("[data-showaddsac]");if(sas){showAddSAC=sas.dataset.showaddsac;showAddAC=false;editCh=null;addErr="";router();focusAdd("sac");return}
+ if(t.closest("[data-canceladd]")){showAddAC=false;showAddSAC=null;addErr="";router();return}
+ if(t.closest("[data-saveac]")){addChannel("ac",null);return}
+ const svs=t.closest("[data-savesac]");if(svs){addChannel("sac",svs.dataset.savesac);return}
+ const ece=t.closest("[data-ecedit]");if(ece){editCh=editCh===ece.dataset.ecedit?null:ece.dataset.ecedit;showAddAC=false;showAddSAC=null;router();const el=$("#ec-nm");if(el)el.focus();return}
+ if(t.closest("[data-eccancel]")){editCh=null;router();return}
+ const ecs=t.closest("[data-ecsave]");if(ecs){saveChEdit(ecs.dataset.ecsave);return}
+ const eee=t.closest("[data-eeedit]");if(eee){editEng=eee.dataset.eeedit;router();const el=$("#ee-nm");if(el)el.focus();return}
+ if(t.closest("[data-eecancel]")){editEng=null;router();return}
+ const ees=t.closest("[data-eesave]");if(ees){saveEngEdit(ees.dataset.eesave);return}
+ const owe=t.closest("[data-ownedit]");if(owe){editOwn=owe.dataset.ownedit;router();const el=$("#own-in");if(el)el.focus();return}
+ if(t.closest("[data-owncancel]")){editOwn=null;router();return}
+ const ows=t.closest("[data-ownsave]");if(ows){saveOwnerEdit(ows.dataset.ownsave);return}
+ if(t.closest("[data-tmadd]")){addTeamMember();return}
+ const dl=t.closest("[data-del]");if(dl){delChannel(dl.dataset.del);return}
+ if(needClose)router();
+});
+document.addEventListener("change",ev=>{
+ const t=ev.target;
+ const fam=t.closest("[data-fam-ck]");if(fam){toggleFam(fam.dataset.famCk);router();return}
+ const leaf=t.closest("[data-leaf-ck]");if(leaf){toggleLeaf(leaf.dataset.leafCk);router();return}
+ const vd=t.closest("[data-verdict]");if(vd){const id=vd.dataset.verdict;ENGMETA[id]=ENGMETA[id]||{};ENGMETA[id].verdict=vd.value;saveEM();router();return}
+ const rm=t.closest("[data-remark]");if(rm){const id=rm.dataset.remark;ENGMETA[id]=ENGMETA[id]||{};ENGMETA[id].remark=rm.value.trim();saveEM();router();return}
+ const tq=t.closest("[data-toolq]");if(tq){toolQ=tq.value;router();return}
+});
+document.addEventListener("keydown",ev=>{
+ if(ev.key!=="Enter")return;
+ const id=ev.target&&ev.target.id;
+ if(id==="nm-ac"||id==="cd-ac"){ev.preventDefault();addChannel("ac",null)}
+ else if(id==="nm-sac"||id==="cd-sac"){ev.preventDefault();addChannel("sac",showAddSAC)}
+ else if(id==="ec-nm"||id==="ec-pr"){ev.preventDefault();const f=document.querySelector("[data-ecsave]");if(f)saveChEdit(f.dataset.ecsave)}
+ else if(id==="ee-nm"||id==="ee-pp"){ev.preventDefault();const f=document.querySelector("[data-eesave]");if(f)saveEngEdit(f.dataset.eesave)}
+ else if(id==="own-in"){ev.preventDefault();const f=document.querySelector("[data-ownsave]");if(f)saveOwnerEdit(f.dataset.ownsave)}
+ else if(id==="tm-in"){ev.preventDefault();addTeamMember()}
+ else if(ev.target&&ev.target.dataset&&(ev.target.dataset.remark!==undefined||ev.target.dataset.toolq!==undefined)){ev.preventDefault();ev.target.blur()}
+});
+/* drag & drop reorder (AC among ACs, SAC within its AC) */
+document.addEventListener("dragstart",ev=>{
+ const h=ev.target.closest&&ev.target.closest("[data-drag]");
+ if(!h)return;
+ dragId=h.dataset.drag;
+ ev.dataTransfer.effectAllowed="move";
+ try{ev.dataTransfer.setData("text/plain",dragId)}catch(e){}
+ h.classList.add("dragsrc");
+});
+document.addEventListener("dragover",ev=>{
+ if(!dragId)return;
+ const h=ev.target.closest&&ev.target.closest("[data-drag]");
+ if(!h||h.dataset.drag===dragId)return;
+ const a=chById(dragId),b=chById(h.dataset.drag);
+ if(!a||!b||(a.parent||null)!==(b.parent||null))return;
+ ev.preventDefault();
+ ev.dataTransfer.dropEffect="move";
+ h.classList.add("dropb");
+});
+document.addEventListener("dragleave",ev=>{
+ const h=ev.target.closest&&ev.target.closest("[data-drag]");
+ if(h)h.classList.remove("dropb");
+});
+document.addEventListener("drop",ev=>{
+ const h=ev.target.closest&&ev.target.closest("[data-drag]");
+ if(!h||!dragId)return;
+ ev.preventDefault();
+ const target=h.dataset.drag;
+ const src=dragId;dragId=null;
+ moveBefore(src,target);
+ router();
+});
+document.addEventListener("dragend",()=>{
+ dragId=null;
+ document.querySelectorAll(".dragsrc,.dropb").forEach(el=>el.classList.remove("dragsrc","dropb"));
 });
 $("#resetBtn").addEventListener("click",()=>{overrides={};saveOv();router()});
+$("#resetChBtn").addEventListener("click",()=>{
+ if(!CUSTOM.length)return;
+ if(confirm("Remove all "+CUSTOM.length+" added channel(s)? Seed v0 channels stay.")){CUSTOM=[];engSel=null;saveCh();router()}
+});
+$("#resetAllBtn").addEventListener("click",()=>{
+ if(!confirm("Reset ALL local edits — statuses, added channels, priorities, renames, verdicts, owners, team? Seed v0 data stays."))return;
+ overrides={};CUSTOM=[];CHMETA={};ENGMETA={};OWNMAP={};TEAM=[];engSel=null;
+ saveOv();saveCh();saveCM();saveEM();saveOW();saveTM();router();
+});
 window.addEventListener("hashchange",router);
 router();
 </script>

@@ -3,17 +3,19 @@
 ## What this is
 Single-file static dashboard for Frido's affiliate program (Project: Frido Mitra / Buddy / Ambassador). It visualizes the program's operating model: 9 sequential macro engines (E1 Acquiring → E9 Retention) executed per affiliate channel (AC / SAC / SSC taxonomy: GT traders, physios, ortho doctors, IG whitelisted/new creators, YT long-form/shorts, campus ambassadors, households, plus a GLOBAL pseudo-channel for shared platform steps).
 
-Views (hash-routed, all rendered from embedded data):
-- **Dashboard** — signature element: each channel as a 9-station "engine line"; station color = dominant GTM status; blue underdot = GLOBAL shared coverage; stations click through to the Cockpit. Plus KPI cards, POC markers (500·500·500 recruits / 6-month POC / 3-month payback), and a show-stopper feed.
-- **Registry** — AC/SAC tree, legacy L1–L4 mapping, per-channel rollups.
-- **Cockpit** — one channel end-to-end across E1–E9; GLOBAL rows shown dashed/de-emphasized; coverage gaps called out.
-- **Lens** — one engine across all channels; stacked status bars; explicit coverage-gap banner.
+Sections (hash-routed, all rendered from embedded data; legacy hashes dashboard/registry/cockpit/lens redirect):
+- **Analytics** (`#/analytics`) — KPI cards, POC markers, the 9-station "engine lines" grid, an Engine × Affiliate matrix (switchable metric: GTM % / Steps / Live / Stoppers; cells deep-link to Engine Analysis), and the show-stopper feed.
+- **Affiliate Channels** (`#/channels`) — priority-ordered AC/SAC registry. Channels display as **numbers** (AC = 1,2,3…; SAC = 2.1, 2.2…), codes demoted to tiny text. Drag ⠿ to reorder (priorities renumber), ✎ edits name/priority, ＋ adds AC/SAC (auto codes), × removes added ones. Only "AC"/"SAC" labels surface (deeper nesting still shows SAC).
+- **Engine Analysis** (`#/engines`) — E1→E9 accordions. Filter = Channels checkbox-tree **drop-down** (AC checkbox = whole family, indeterminate on partial; selection can never be empty). **Combined / Separated** are independently toggleable (≥1 always on; both on = aggregate + per-channel). Per engine: verdict dropdown (🟢 Go Ahead / 🟡 Pending / 🔴 Showstopper) + free-text remark, ✎ edit of name/purpose, and sub-tabs **Steps | Blockers | Owners | Tools**.
+- **Tools** (`#/tools`) — every tool garnered from all rows' `poc`/`scaled` fields (token-split on +/,; alias RR→Refer Rush), usage per engine/channel, status split, and the "steps with no tool yet" gap list.
+- **Team** (`#/team`) — owners garnered from all rows for bandwidth management: load bars, status split, stoppers per person; ＋ add members; ✎ per-step (re)assign.
 
 ## Data & provenance (important)
 - All data is embedded in `index.html` as three constants: `ENGINES`, `CHANNELS`, `LEDGER`.
 - Ledger grain: one row = one sub-engine for one leaf channel in one engine. Row id = `CH-Ex-NN`.
 - `src:"v0"` rows come verbatim-ish from the master Google Sheet (sheet id `1ifYKFph9DSIsQDPoYrjhbBk7bCWrN-KA0QuL-jeT_y0`). `src:"draft"` rows are proposals awaiting Sprint-1 confirmation. **Never silently invent new v0 rows — new content is `draft` until Abdal confirms.**
-- The Google Sheet is the system of record (see `docs/engine-os-design.md` §2); this app is the front-end. GTM chip clicks persist to `localStorage` key `fm_gtm_v1` (browser-local only, by design in v1).
+- The Google Sheet is the system of record (see `docs/engine-os-design.md` §2); this app is the front-end.
+- **All user edits are browser-local localStorage overrides — the seed constants are never mutated.** Keys: `fm_gtm_v1` (status clicks) · `fm_channels_v1` (added channels) · `fm_chmeta_v1` (channel renames + priorities) · `fm_engmeta_v1` (engine renames/purpose + verdict + remark) · `fm_owner_v1` (per-row owner reassignment) · `fm_team_v1` (manually added team members). Footer has per-store and reset-all buttons.
 
 ## Stack & constraints
 - Pure static, no build step, no framework: one `index.html`, vanilla JS, hash router. Keep it single-file unless a change genuinely requires splitting.
