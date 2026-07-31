@@ -281,6 +281,20 @@ h2{font-family:var(--disp);font-weight:600;font-size:26px;margin-bottom:4px}
 .srch{background:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 12px;color:var(--text);font-size:13px;min-width:220px}
 .ownin{background:var(--ink);border:1px solid var(--line);border-radius:7px;padding:4px 8px;color:var(--text);font-size:12px;min-width:140px}
 
+/* v1.3 — focus on tasks + departments */
+.focusbtn{font-size:13px;line-height:1;padding:3px 6px;border-radius:6px;filter:grayscale(1);opacity:.45;flex:none}
+.focusbtn:hover{opacity:.85;background:rgba(148,163,184,.12)}
+.focusbtn.on{filter:none;opacity:1;background:rgba(240,162,49,.16)}
+.step.focz,.miniline.focz{background:rgba(240,162,49,.05);box-shadow:inset 2px 0 0 var(--saffron)}
+.tag.dept{background:rgba(148,163,184,.12);color:var(--muted);text-transform:none;letter-spacing:.02em}
+.focchip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;padding:7px 13px;border-radius:9px;border:1px solid var(--line);color:var(--muted);background:var(--panel)}
+.focchip:hover{color:var(--text)}
+.focchip.on{border-color:var(--saffron);color:var(--saffron);background:rgba(240,162,49,.1);font-weight:500}
+.deptline{display:flex;gap:12px;align-items:center;padding:9px 16px;border-bottom:1px solid rgba(148,163,184,.07);font-size:13px;flex-wrap:wrap}
+.deptline:last-child{border-bottom:0}
+.deptline .dn{font-weight:600;min-width:130px}
+.deptline .mono{font-size:11px}
+
 /* stopper feed */
 .feed .step{grid-template-columns:1fr auto}
 footer{border-top:1px solid var(--line);margin-top:40px;padding:20px 24px;max-width:1240px;margin-left:auto;margin-right:auto;font-size:12px;color:var(--faint);display:flex;gap:18px;flex-wrap:wrap;align-items:center}
@@ -309,7 +323,7 @@ footer button:hover{color:var(--text)}
       <button data-v="tools">Tools</button>
       <button data-v="team">Team</button>
     </nav>
-    <span class="ver">v1.2 · ops</span>
+    <span class="ver">v1.3 · focus</span>
   </div>
 </header>
 
@@ -323,7 +337,7 @@ footer button:hover{color:var(--text)}
 
 <footer>
   <span>System of record: Google Sheet (Engine OS design §2). This build: embedded seed v1 — rows tagged <span class="tag v0">V0</span> come from the master sheet; <span class="tag draft">DRAFT</span> rows need Sprint-1 confirmation.</span>
-  <span>Status clicks, added channels, priorities, verdicts and owner edits are saved in this browser only.</span>
+  <span>Status clicks, added channels, priorities, departments, verdicts, owner edits and 🎯 focus flags are saved in this browser only.</span>
   <button id="resetBtn">Reset local status edits</button>
   <button id="resetChBtn">Remove added channels</button>
   <button id="resetAllBtn">Reset ALL local edits</button>
@@ -421,11 +435,15 @@ const CMKEY="fm_chmeta_v1";    let CHMETA=loadLS(CMKEY,{});   /* {chId:{name,pri
 const EMKEY="fm_engmeta_v1";   let ENGMETA=loadLS(EMKEY,{});  /* {engId:{name,purpose,verdict,remark}} */
 const OWKEY="fm_owner_v1";     let OWNMAP=loadLS(OWKEY,{});   /* {rowId:owner} */
 const TMKEY="fm_team_v1";      let TEAM=loadLS(TMKEY,[]);     if(!Array.isArray(TEAM))TEAM=[];
+const FCKEY="fm_focus_v1";     let FOCUS=loadLS(FCKEY,{});    /* {rowId:1} — focused tasks */
+const DPKEY="fm_deptmap_v1";   let DEPTMAP=loadLS(DPKEY,{});  /* {memberName:department} */
 function saveCh(){saveLS(CHKEY,CUSTOM)}
 function saveCM(){saveLS(CMKEY,CHMETA)}
 function saveEM(){saveLS(EMKEY,ENGMETA)}
 function saveOW(){saveLS(OWKEY,OWNMAP)}
 function saveTM(){saveLS(TMKEY,TEAM)}
+function saveFC(){saveLS(FCKEY,FOCUS)}
+function saveDP(){saveLS(DPKEY,DEPTMAP)}
 
 function allCh(){
  const m=CHANNELS.concat(CUSTOM.map(c=>({...c})));
@@ -487,6 +505,22 @@ function effEng(e){const m=ENGMETA[e.id]||{};return {name:m.name||e.name,purpose
 const VERDICTS={go:"Go Ahead",pend:"Pending",stop:"Showstopper"};
 function verdPill(eid){const v=(ENGMETA[eid]||{}).verdict;if(!v)return"";return '<span class="verd '+v+'">'+(v==="go"?"🟢 ":v==="pend"?"🟡 ":"🔴 ")+VERDICTS[v]+'</span>'}
 
+/* focus-on-task + departments */
+function isFoc(r){return !!FOCUS[rowId(r)]}
+function focusBtn(r){const rid=rowId(r);const on=!!FOCUS[rid];
+ return '<button class="focusbtn'+(on?' on':'')+'" data-focus="'+rid+'" title="'+(on?'Focused — click to unfocus':'Focus on this task')+'" aria-pressed="'+on+'">🎯</button>'}
+function focCount(rows){return rows.filter(isFoc).length}
+function chDept(id){return (CHMETA[id]&&CHMETA[id].dept)||""}
+function memDept(name){return DEPTMAP[name]||""}
+function deptTag(d,title){return d?'<span class="tag dept" title="'+esc(title||"Department")+'">'+esc(d)+'</span>':''}
+function allDepts(){
+ const s=new Set();
+ Object.values(CHMETA).forEach(m=>{if(m&&m.dept)s.add(m.dept)});
+ Object.values(DEPTMAP).forEach(d=>{if(d)s.add(d)});
+ return [...s].sort();
+}
+function deptListHTML(){return '<datalist id="deptlist">'+allDepts().map(d=>'<option value="'+esc(d)+'">').join('')+'</datalist>'}
+
 /* tool + owner aggregation ("garner from all places") */
 const TOOL_ALIAS={"RR":"Refer Rush"};
 function toolTokens(str){return String(str||"").split(/[+,]/).map(s=>s.trim()).filter(Boolean).map(t=>TOOL_ALIAS[t]||t)}
@@ -518,6 +552,7 @@ let engSel=null;            /* null = every leaf channel selected */
 let metric="gtm";
 let showAddAC=false,showAddSAC=null,addErr="";
 let editCh=null,editEng=null,editOwn=null,dropOpen=false,selWarn=false,toolQ="",dragId=null;
+let focusOnlyCh=false,focusOnlyTm=false,editDept=null;
 function selLeaves(){const all=leafList();return engSel===null?all:all.filter(c=>engSel.has(c.id))}
 function openChain(id){let cur=chById(id);while(cur&&cur.parent){const p=chById(cur.parent);if(p){if(p.parent)openSAC.add(p.id);else openAC.add(p.id)}cur=p}}
 function materializeSel(){if(engSel===null)engSel=new Set(leafList().map(c=>c.id))}
@@ -584,7 +619,10 @@ function moveBefore(dragged,target){
 function saveChEdit(id){
  const nm=($("#ec-nm")?$("#ec-nm").value:"").trim();
  const pr=parseInt($("#ec-pr")?$("#ec-pr").value:"",10);
+ const dp=($("#ec-dp")?$("#ec-dp").value:"").trim();
  if(nm){CHMETA[id]=CHMETA[id]||{};if(nm!==chById(id).name)CHMETA[id].name=nm;else delete CHMETA[id].name}
+ CHMETA[id]=CHMETA[id]||{};
+ if(dp)CHMETA[id].dept=dp;else delete CHMETA[id].dept;
  saveCM();
  if(!isNaN(pr)&&pr>0)setPriority(id,pr);
  editCh=null;router();
@@ -606,10 +644,17 @@ function saveOwnerEdit(rid){
 }
 function addTeamMember(){
  const v=($("#tm-in")?$("#tm-in").value:"").trim();
+ const d=($("#tm-dept")?$("#tm-dept").value:"").trim();
  if(!v)return;
  const exists=TEAM.some(t=>t.toLowerCase()===v.toLowerCase())||Object.keys(ownerAgg(LEDGER)).some(o=>o.toLowerCase()===v.toLowerCase());
  if(!exists)TEAM.push(v);
+ if(d){DEPTMAP[v]=d;saveDP()}
  saveTM();router();
+}
+function saveMemberDept(name){
+ const d=($("#md-in")?$("#md-in").value:"").trim();
+ if(d)DEPTMAP[name]=d;else delete DEPTMAP[name];
+ saveDP();editDept=null;router();
 }
 
 /* ---------------- section 1 · analytics ---------------- */
@@ -685,11 +730,13 @@ function vAnalytics(){
 function stepsByEngine(cid){
  let h='';
  ENGINES.forEach(e=>{
-  const rs=rowsFor(cid,e.id);if(!rs.length)return;
+  let rs=rowsFor(cid,e.id);if(!rs.length)return;
+  if(focusOnlyCh){rs=rs.filter(isFoc);if(!rs.length)return}
   h+='<div class="sengine"><span class="eid">'+e.id+'</span> '+esc(effEng(e).name)+'</div>';
-  rs.forEach(r=>{h+='<div class="step"><div class="sq">'+pad2(r.seq)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>'});
+  rs.forEach(r=>{h+='<div class="step'+(isFoc(r)?' focz':'')+'"><div class="sq">'+pad2(r.seq)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div><div class="right"><span style="display:inline-flex;gap:6px;align-items:center">'+focusBtn(r)+statChip(r)+'</span>'+srcTag(r)+'</div></div>'});
  });
- return h||'<div class="gap">No steps defined for this channel yet — they land here once scoped.</div>';
+ if(!h)return focusOnlyCh?'<div class="gap">No focused tasks in this channel.</div>':'<div class="gap">No steps defined for this channel yet — they land here once scoped.</div>';
+ return h;
 }
 function addFormHTML(kind,parent){
  const isAC=kind==="ac";
@@ -704,16 +751,18 @@ function addFormHTML(kind,parent){
 function editFormHTML(c,num){
  return '<div class="editrow">'
   +'<span class="lbl">EDIT</span>'
-  +'<input id="ec-nm" value="'+esc(effChName(c))+'" maxlength="60" aria-label="Channel name" style="min-width:220px">'
+  +'<input id="ec-nm" value="'+esc(effChName(c))+'" maxlength="60" aria-label="Channel name" style="min-width:200px">'
   +'<span class="lbl">PRIORITY</span>'
   +'<input id="ec-pr" class="num" type="number" min="1" max="99" value="'+num+'" aria-label="Priority number">'
+  +'<span class="lbl">DEPARTMENT</span>'
+  +'<input id="ec-dp" value="'+esc(chDept(c.id))+'" maxlength="30" list="deptlist" placeholder="e.g. Marketing" aria-label="Department" style="min-width:140px">'
   +'<button class="go" data-ecsave="'+c.id+'">Save</button>'
   +'<button class="xall" data-eccancel>Cancel</button>'
   +'<span class="codemini">'+c.id+'</span>'
   +'</div>';
 }
 function headIcons(c){
- return '<button class="hicon" data-ecedit="'+c.id+'" title="Edit name / priority">✎</button>'
+ return '<button class="hicon" data-ecedit="'+c.id+'" title="Edit name / priority / department">✎</button>'
   +(c.custom?'<button class="delx" data-del="'+c.id+'" title="Remove this added channel">×</button>':'');
 }
 function renderSub(c,nums){
@@ -722,8 +771,8 @@ function renderSub(c,nums){
  const rows=rowsMany(leafUnder(c.id).map(x=>x.id));
  const num=nums[c.id];
  let h='<div class="acc sac'+(isOpen?' open':'')+'" id="ch-'+c.id+'">'
-  +'<div class="acc-head" draggable="true" data-drag="'+c.id+'"><span class="grip" title="Drag to reorder">⠿</span><button class="hmain" data-tglsac="'+c.id+'" aria-expanded="'+isOpen+'"><span class="chev">▸</span><span class="numb">'+num+'</span><span class="anm">'+esc(effChName(c))+'</span>'+chTag(c)+' <span class="codemini">'+c.id+'</span></button>'
-  +'<span class="astat">'+(kids.length?kids.length+' sub · ':'')+rows.length+' steps · '+gtmPct(rows)+'%</span>'
+  +'<div class="acc-head" draggable="true" data-drag="'+c.id+'"><span class="grip" title="Drag to reorder">⠿</span><button class="hmain" data-tglsac="'+c.id+'" aria-expanded="'+isOpen+'"><span class="chev">▸</span><span class="numb">'+num+'</span><span class="anm">'+esc(effChName(c))+'</span>'+chTag(c)+deptTag(chDept(c.id))+' <span class="codemini">'+c.id+'</span></button>'
+  +'<span class="astat">'+(focCount(rows)?'🎯'+focCount(rows)+' · ':'')+(kids.length?kids.length+' sub · ':'')+rows.length+' steps · '+gtmPct(rows)+'%</span>'
   +headIcons(c)
   +'</div><div class="acc-body">'
   +(editCh===c.id?editFormHTML(c,num.split(".").pop()):'')
@@ -741,8 +790,8 @@ function renderAC(c,nums){
  return '<div class="acc'+(isOpen?' open':'')+'" id="ch-'+c.id+'">'
   +'<div class="acc-head"'+(c.global?'':' draggable="true" data-drag="'+c.id+'"')+'>'
   +(c.global?'':'<span class="grip" title="Drag to reorder">⠿</span>')
-  +'<button class="hmain" data-tglac="'+c.id+'" aria-expanded="'+isOpen+'"'+(c.global?' style="padding-left:16px"':'')+'><span class="chev">▸</span><span class="numb'+(c.global?' g':'')+'">'+(c.global?"G":num)+'</span><span class="anm">'+esc(effChName(c))+'</span>'+(c.global?'<span class="tag glob">SHARED</span>':chTag(c))+' <span class="codemini">'+c.id+'</span></button>'
-  +'<span class="astat">'+(c.global?'':(d?d+' SAC · ':''))+statLine(rows)+'</span>'
+  +'<button class="hmain" data-tglac="'+c.id+'" aria-expanded="'+isOpen+'"'+(c.global?' style="padding-left:16px"':'')+'><span class="chev">▸</span><span class="numb'+(c.global?' g':'')+'">'+(c.global?"G":num)+'</span><span class="anm">'+esc(effChName(c))+'</span>'+(c.global?'<span class="tag glob">SHARED</span>':chTag(c))+deptTag(chDept(c.id))+' <span class="codemini">'+c.id+'</span></button>'
+  +'<span class="astat">'+(focCount(rows)?'🎯'+focCount(rows)+' · ':'')+(c.global?'':(d?d+' SAC · ':''))+statLine(rows)+'</span>'
   +(c.global?'':headIcons(c))
   +'</div><div class="acc-body">'
   +(editCh===c.id?editFormHTML(c,num):'')
@@ -753,19 +802,27 @@ function renderAC(c,nums){
 }
 function vChannels(){
  const nums=buildNums();
- let h='<h2>Affiliate channels</h2><p class="sub">The AC / SAC registry, priority-ordered. Drag ⠿ to reorder (priorities renumber automatically), ✎ to edit a name or set a priority number directly. Additions and edits are saved in this browser.</p>';
- h+=showAddAC?addFormHTML("ac",null):'<button class="addbtn" data-showaddac style="margin-bottom:16px">＋ Add Affiliate Channel</button>';
+ const focN=LEDGER.filter(isFoc).length;
+ let h='<h2>Affiliate channels</h2><p class="sub">The AC / SAC registry, priority-ordered. Drag ⠿ to reorder (priorities renumber automatically), ✎ to edit name, priority number and department. 🎯 marks the tasks you are focusing on.</p>';
+ h+='<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px">'
+  +(showAddAC?'':'<button class="addbtn" data-showaddac>＋ Add Affiliate Channel</button>')
+  +'<button class="focchip'+(focusOnlyCh?' on':'')+'" data-focch aria-pressed="'+focusOnlyCh+'">🎯 Focused only'+(focN?' · '+focN:'')+'</button>'
+  +(focusOnlyCh&&!focN?'<span class="codemini" style="color:var(--saffron)">no tasks focused yet — hit 🎯 on any step</span>':'')
+  +'</div>';
+ if(showAddAC)h+=addFormHTML("ac",null);
  const g=chById("GLOBAL");
  if(g)h+=renderAC(g,nums);
  ordTops().forEach(c=>{h+=renderAC(c,nums)});
+ h+=deptListHTML();
  $("#v-channels").innerHTML=h;
 }
 
 /* ---------------- section 3 · engine analysis ---------------- */
 function famState(ids){const sel=new Set(selLeaves().map(c=>c.id));const on=ids.filter(i=>sel.has(i)).length;return on===0?"off":on===ids.length?"on":"part"}
 function engStep(r,withCh,nums){
- if(withCh)return '<div class="step" style="grid-template-columns:72px 1fr auto"><div class="mono" style="color:var(--'+(r.ch==="GLOBAL"?'sky':'saffron')+');font-size:11px;padding-top:3px" title="'+r.ch+'">'+(nums[r.ch]||r.ch)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>';
- return '<div class="step"><div class="sq">'+pad2(r.seq)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div><div class="right">'+statChip(r)+srcTag(r)+'</div></div>';
+ const right='<div class="right"><span style="display:inline-flex;gap:6px;align-items:center">'+focusBtn(r)+statChip(r)+'</span>'+srcTag(r)+'</div>';
+ if(withCh)return '<div class="step'+(isFoc(r)?' focz':'')+'" style="grid-template-columns:72px 1fr auto"><div class="mono" style="color:var(--'+(r.ch==="GLOBAL"?'sky':'saffron')+');font-size:11px;padding-top:3px" title="'+r.ch+'">'+(nums[r.ch]||r.ch)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div>'+right+'</div>';
+ return '<div class="step'+(isFoc(r)?' focz':'')+'"><div class="sq">'+pad2(r.seq)+'</div><div><div class="nm">'+esc(r.name)+'</div>'+metaLine(r)+stopLine(r)+'</div>'+right+'</div>';
 }
 function dropPanel(nums){
  let h='<div class="droppanel" id="chdroppanel">';
@@ -930,31 +987,59 @@ function vTeam(){
  const maxLoad=Math.max(1,...named.map(k=>ag[k].rows.length));
  const assigned=LEDGER.filter(r=>{const o=effOwner(r);return o!=="Unassigned"&&o!=="—"}).length;
  const assignable=LEDGER.filter(r=>effOwner(r)!=="—").length;
- let h='<h2>Team</h2><p class="sub">Every owner garnered from every step — load, status and blockers per person, for bandwidth management. Click ✎ on a step to (re)assign it; edits stay in this browser.</p>';
+ const focN=LEDGER.filter(isFoc).length;
+ let h='<h2>Team</h2><p class="sub">Every owner garnered from every step — load, status, departments and focus, for bandwidth management. ✎ on a step (re)assigns it, 🎯 focuses it; edits stay in this browser.</p>';
  h+='<div class="kpis">'
   +'<div class="kpi"><div class="n">'+named.length+'</div><div class="l">Team members tracked</div></div>'
   +'<div class="kpi"><div class="n">'+Math.round(100*assigned/Math.max(1,assignable))+'%</div><div class="l">Steps assigned</div></div>'
   +'<div class="kpi"><div class="n"'+(un.rows.length?' style="color:var(--saffron)"':'')+'>'+un.rows.length+'</div><div class="l">Unassigned steps</div></div>'
+  +'<div class="kpi"><div class="n"'+(focN?' style="color:var(--saffron)"':'')+'>'+focN+'</div><div class="l">🎯 Focused tasks</div></div>'
   +'<div class="kpi"><div class="n">'+(named.length?esc(named[0])+' · '+ag[named[0]].rows.length:'—')+'</div><div class="l">Heaviest load</div></div></div>';
- h+='<div class="addform" style="margin:6px 0 16px"><input id="tm-in" placeholder="Add team member by name…" maxlength="40" aria-label="Team member name"><button class="go" data-tmadd>Add member</button><span class="codemini">members with zero steps = free bandwidth</span></div>';
+ /* department bandwidth rollup */
+ const depts={};
+ named.forEach(k=>{const d=memDept(k)||"No department";depts[d]=depts[d]||{members:[],rows:[]};depts[d].members.push(k);depts[d].rows=depts[d].rows.concat(ag[k].rows)});
+ const dKeys=Object.keys(depts).sort((a,b)=>a==="No department"?1:b==="No department"?-1:depts[b].rows.length-depts[a].rows.length||a.localeCompare(b));
+ if(dKeys.length){
+  h+='<div class="sect">Bandwidth by department</div><div class="panel">';
+  dKeys.forEach(d=>{const g=depts[d];
+   h+='<div class="deptline"><span class="dn"'+(d==="No department"?' style="color:var(--faint);font-weight:400"':'')+'>'+esc(d)+'</span>'
+    +'<span class="mono fnt">'+g.members.length+' member'+(g.members.length!==1?'s':'')+' · '+g.rows.length+' steps · 🎯'+focCount(g.rows)+'</span>'
+    +barHTML(g.rows,140)
+    +'<span class="mini" style="margin-left:auto">'+g.members.map(esc).join(" · ")+'</span></div>';
+  });
+  h+='</div>';
+ }
+ h+='<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0 16px">'
+  +'<button class="focchip'+(focusOnlyTm?' on':'')+'" data-foctm aria-pressed="'+focusOnlyTm+'">🎯 Focused only'+(focN?' · '+focN:'')+'</button>'
+  +'</div>';
+ h+='<div class="addform" style="margin:0 0 16px"><input id="tm-in" placeholder="Add team member by name…" maxlength="40" aria-label="Team member name"><input id="tm-dept" list="deptlist" placeholder="Department (optional)" maxlength="30" aria-label="Member department" style="min-width:170px"><button class="go" data-tmadd>Add member</button><span class="codemini">members with zero steps = free bandwidth</span></div>';
  h+='<div class="cards">';
  keys.forEach(k=>{
   const g=ag[k];const isUn=k==="Unassigned";
-  h+='<div class="card"'+(isUn?' style="border-color:rgba(240,162,49,.45)"':'')+'><div class="chead"><span class="tname"'+(isUn?' style="color:var(--saffron)"':'')+'>'+esc(k)+'</span><span class="cnt">'+g.rows.length+' steps'+(g.stoppers?' · '+g.stoppers+' stopper'+(g.stoppers>1?'s':''):'')+'</span></div><div class="cbody">';
+  let rows=g.rows;
+  if(focusOnlyTm)rows=rows.filter(isFoc);
+  if(focusOnlyTm&&!rows.length&&!isUn)return;
+  const dept=isUn?"":memDept(k);
+  h+='<div class="card"'+(isUn?' style="border-color:rgba(240,162,49,.45)"':'')+'><div class="chead"><span class="tname"'+(isUn?' style="color:var(--saffron)"':'')+'>'+esc(k)+'</span>'
+   +(isUn?'':(editDept===k
+     ?'<span style="display:inline-flex;gap:6px;align-items:center"><input id="md-in" class="ownin" list="deptlist" value="'+esc(dept)+'" placeholder="Department" aria-label="Department"><button class="go" style="border-radius:7px;padding:4px 10px;font-size:12px;background:var(--saffron);color:var(--ink)" data-mdsave="'+esc(k)+'">Save</button><button class="xall" data-mdcancel>✕</button></span>'
+     :deptTag(dept||"","Department")+'<button class="hicon" data-mdept="'+esc(k)+'" title="Set department">'+(dept?'✎':'＋ dept')+'</button>'))
+   +'<span class="cnt">'+g.rows.length+' steps'+(focCount(g.rows)?' · 🎯'+focCount(g.rows):'')+(g.stoppers?' · '+g.stoppers+' stopper'+(g.stoppers>1?'s':''):'')+'</span></div><div class="cbody">';
   if(!isUn)h+='<div class="loadbar" title="Load vs heaviest"><i style="width:'+(100*g.rows.length/maxLoad)+'%"></i></div>';
   if(g.rows.length)h+=barHTML(g.rows)+'<div class="mini" style="margin:6px 0 4px">'+[...g.engines].sort().join(" · ")+'</div>';
   else h+='<div class="mini" style="margin:2px 0 4px">'+(isUn?'Nothing unassigned — all covered.':'No steps yet — free bandwidth.')+'</div>';
-  g.rows.forEach(r=>{
+  if(focusOnlyTm&&!rows.length&&g.rows.length)h+='<div class="mini" style="color:var(--faint)">No focused tasks for this member.</div>';
+  rows.forEach(r=>{
    const rid=rowId(r);
    if(editOwn===rid){
     h+='<div class="miniline"><input id="own-in" class="ownin" value="'+esc(effOwner(r)==="Unassigned"?"":effOwner(r))+'" placeholder="Owner name" aria-label="Owner name"><button class="go" style="border-radius:7px;padding:4px 10px;font-size:12px;background:var(--saffron);color:var(--ink)" data-ownsave="'+rid+'">Save</button><button class="xall" data-owncancel>✕</button><span class="codemini">'+rid+'</span></div>';
    }else{
-    h+='<div class="miniline"><span class="mono fnt" title="'+r.ch+'">'+(nums[r.ch]||r.ch)+'</span><span class="mono fnt">'+r.eng+'</span><span>'+esc(r.name)+'</span><span style="margin-left:auto;display:inline-flex;gap:6px;align-items:center">'+(OWNMAP[rid]?'<span class="codemini" title="Reassigned locally">✱</span>':'')+statChip(r)+'<button class="hicon" data-ownedit="'+rid+'" title="Assign / reassign owner">✎</button></span></div>';
+    h+='<div class="miniline'+(isFoc(r)?' focz':'')+'" style="padding-left:6px"><span class="mono fnt" title="'+r.ch+'">'+(nums[r.ch]||r.ch)+'</span><span class="mono fnt">'+r.eng+'</span><span>'+esc(r.name)+'</span><span style="margin-left:auto;display:inline-flex;gap:6px;align-items:center">'+(OWNMAP[rid]?'<span class="codemini" title="Reassigned locally">✱</span>':'')+focusBtn(r)+statChip(r)+'<button class="hicon" data-ownedit="'+rid+'" title="Assign / reassign owner">✎</button></span></div>';
    }
   });
   h+='</div></div>';
  });
- h+='</div>';
+ h+='</div>'+deptListHTML();
  $("#v-team").innerHTML=h;
 }
 
@@ -1030,6 +1115,12 @@ document.addEventListener("click",ev=>{
  if(t.closest("[data-owncancel]")){editOwn=null;router();return}
  const ows=t.closest("[data-ownsave]");if(ows){saveOwnerEdit(ows.dataset.ownsave);return}
  if(t.closest("[data-tmadd]")){addTeamMember();return}
+ const fc2=t.closest("[data-focus]");if(fc2){const rid=fc2.dataset.focus;if(FOCUS[rid])delete FOCUS[rid];else FOCUS[rid]=1;saveFC();router();return}
+ if(t.closest("[data-focch]")){focusOnlyCh=!focusOnlyCh;if(focusOnlyCh){LEDGER.filter(isFoc).forEach(r=>{const c=chById(r.ch);if(!c)return;openChain(c.id);if(c.parent)openSAC.add(c.id);else openAC.add(c.id)})}router();return}
+ if(t.closest("[data-foctm]")){focusOnlyTm=!focusOnlyTm;router();return}
+ const mde=t.closest("[data-mdept]");if(mde){editDept=mde.dataset.mdept;editOwn=null;router();const el=$("#md-in");if(el)el.focus();return}
+ if(t.closest("[data-mdcancel]")){editDept=null;router();return}
+ const mds=t.closest("[data-mdsave]");if(mds){saveMemberDept(mds.dataset.mdsave);return}
  const dl=t.closest("[data-del]");if(dl){delChannel(dl.dataset.del);return}
  if(needClose)router();
 });
@@ -1046,7 +1137,9 @@ document.addEventListener("keydown",ev=>{
  const id=ev.target&&ev.target.id;
  if(id==="nm-ac"||id==="cd-ac"){ev.preventDefault();addChannel("ac",null)}
  else if(id==="nm-sac"||id==="cd-sac"){ev.preventDefault();addChannel("sac",showAddSAC)}
- else if(id==="ec-nm"||id==="ec-pr"){ev.preventDefault();const f=document.querySelector("[data-ecsave]");if(f)saveChEdit(f.dataset.ecsave)}
+ else if(id==="ec-nm"||id==="ec-pr"||id==="ec-dp"){ev.preventDefault();const f=document.querySelector("[data-ecsave]");if(f)saveChEdit(f.dataset.ecsave)}
+ else if(id==="md-in"){ev.preventDefault();const f=document.querySelector("[data-mdsave]");if(f)saveMemberDept(f.dataset.mdsave)}
+ else if(id==="tm-dept"){ev.preventDefault();addTeamMember()}
  else if(id==="ee-nm"||id==="ee-pp"){ev.preventDefault();const f=document.querySelector("[data-eesave]");if(f)saveEngEdit(f.dataset.eesave)}
  else if(id==="own-in"){ev.preventDefault();const f=document.querySelector("[data-ownsave]");if(f)saveOwnerEdit(f.dataset.ownsave)}
  else if(id==="tm-in"){ev.preventDefault();addTeamMember()}
@@ -1094,9 +1187,9 @@ $("#resetChBtn").addEventListener("click",()=>{
  if(confirm("Remove all "+CUSTOM.length+" added channel(s)? Seed v0 channels stay.")){CUSTOM=[];engSel=null;saveCh();router()}
 });
 $("#resetAllBtn").addEventListener("click",()=>{
- if(!confirm("Reset ALL local edits — statuses, added channels, priorities, renames, verdicts, owners, team? Seed v0 data stays."))return;
- overrides={};CUSTOM=[];CHMETA={};ENGMETA={};OWNMAP={};TEAM=[];engSel=null;
- saveOv();saveCh();saveCM();saveEM();saveOW();saveTM();router();
+ if(!confirm("Reset ALL local edits — statuses, added channels, priorities, renames, departments, verdicts, owners, team, focus flags? Seed v0 data stays."))return;
+ overrides={};CUSTOM=[];CHMETA={};ENGMETA={};OWNMAP={};TEAM=[];FOCUS={};DEPTMAP={};engSel=null;focusOnlyCh=false;focusOnlyTm=false;
+ saveOv();saveCh();saveCM();saveEM();saveOW();saveTM();saveFC();saveDP();router();
 });
 window.addEventListener("hashchange",router);
 router();
