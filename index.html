@@ -30,11 +30,30 @@ header{position:sticky;top:0;z-index:50;background:rgba(16,19,25,.92);backdrop-f
 .brand{display:flex;flex-direction:column;gap:2px;min-width:180px}
 .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--saffron)}
 .brand h1{font-family:var(--disp);font-weight:700;font-size:22px;letter-spacing:.01em;line-height:1}
-nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
-nav button{padding:7px 14px;border-radius:8px;font-size:13.5px;font-weight:500;color:var(--muted);border:1px solid transparent}
-nav button:hover{color:var(--text);background:var(--panel)}
+.hamb{display:flex;flex-direction:column;justify-content:center;gap:4px;width:42px;height:42px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--panel);flex:none}
+.hamb span{display:block;height:2px;border-radius:2px;background:var(--text);transition:transform .2s,opacity .2s}
+.hamb:hover{border-color:var(--saffron)}
+body.drawer-open .hamb span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+body.drawer-open .hamb span:nth-child(2){opacity:0}
+body.drawer-open .hamb span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.ver{font-family:var(--mono);font-size:11px;color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin-left:auto}
+
+/* left nav drawer */
+#scrim{position:fixed;inset:0;background:rgba(8,10,14,.55);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .22s;z-index:70;border:0}
+body.drawer-open #scrim{opacity:1;pointer-events:auto}
+#drawer{position:fixed;top:0;left:0;bottom:0;width:290px;max-width:85vw;background:var(--panel);border-right:1px solid var(--line);z-index:80;display:flex;flex-direction:column;transform:translateX(-102%);visibility:hidden;transition:transform .24s ease,visibility .24s}
+body.drawer-open #drawer{transform:none;visibility:visible}
+.dhead{display:flex;align-items:center;gap:10px;padding:18px 18px 14px;border-bottom:1px solid var(--line)}
+.dhead .eyebrow{font-size:10px}
+.dhead .dx{margin-left:auto;color:var(--faint);font-size:16px;padding:6px 10px;border-radius:8px}
+.dhead .dx:hover{color:var(--text);background:rgba(148,163,184,.12)}
+nav{display:flex;flex-direction:column;gap:4px;padding:14px 12px;overflow:auto}
+nav button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:12px 14px;border-radius:10px;font-size:14.5px;font-weight:500;color:var(--muted);border:1px solid transparent}
+nav button .ni{font-family:var(--mono);font-size:10.5px;color:var(--faint);width:20px;flex:none}
+nav button:hover{color:var(--text);background:var(--panel2)}
 nav button.on{color:var(--ink);background:var(--saffron);font-weight:600}
-.ver{font-family:var(--mono);font-size:11px;color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+nav button.on .ni{color:rgba(16,19,25,.6)}
+.dfoot{margin-top:auto;padding:14px 18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--faint)}
 
 main{max-width:1240px;margin:0 auto;padding:28px 24px 80px}
 .view{display:none}
@@ -312,20 +331,30 @@ footer button:hover{color:var(--text)}
 <body>
 <header>
   <div class="hwrap">
+    <button id="menuBtn" class="hamb" aria-label="Open navigation menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
     <div class="brand">
       <span class="eyebrow">FRIDO MITRA · AFFILIATE PROGRAM</span>
       <h1>Engine OS</h1>
     </div>
-    <nav id="nav" aria-label="Sections">
-      <button data-v="analytics">Analytics</button>
-      <button data-v="channels">Affiliate Channels</button>
-      <button data-v="engines">Engine Analysis</button>
-      <button data-v="tools">Tools</button>
-      <button data-v="team">Team</button>
-    </nav>
-    <span class="ver">v1.3 · focus</span>
+    <span class="ver">v1.4 · nav</span>
   </div>
 </header>
+
+<button id="scrim" tabindex="-1" aria-hidden="true"></button>
+<aside id="drawer" aria-label="Navigation panel">
+  <div class="dhead">
+    <span class="eyebrow">ENGINE OS · SECTIONS</span>
+    <button class="dx" id="drawerClose" aria-label="Close navigation menu">✕</button>
+  </div>
+  <nav id="nav" aria-label="Sections">
+    <button data-v="analytics"><span class="ni">01</span>Analytics</button>
+    <button data-v="channels"><span class="ni">02</span>Affiliate Channels</button>
+    <button data-v="engines"><span class="ni">03</span>Engine Analysis</button>
+    <button data-v="tools"><span class="ni">04</span>Tools</button>
+    <button data-v="team"><span class="ni">05</span>Team</button>
+  </nav>
+  <div class="dfoot">Frido Mitra · Affiliate Program</div>
+</aside>
 
 <main>
   <section class="view" id="v-analytics"></section>
@@ -1080,12 +1109,21 @@ function router(){
 }
 
 /* ---------------- events ---------------- */
+function drawerOpen(){return document.body.classList.contains("drawer-open")}
+function setDrawer(on){
+ document.body.classList.toggle("drawer-open",on);
+ const mb=$("#menuBtn");if(mb)mb.setAttribute("aria-expanded",on?"true":"false");
+ if(on){const first=document.querySelector("#nav button.on")||document.querySelector("#nav button");if(first)first.focus()}
+ else if(mb)mb.focus();
+}
 document.addEventListener("click",ev=>{
  const t=ev.target;
  let needClose=false;
  if(dropOpen&&!t.closest("[data-droproot]")){dropOpen=false;needClose=true}
+ if(t.closest("#menuBtn")){setDrawer(!drawerOpen());if(needClose)router();return}
+ if(t.closest("#drawerClose")||t.closest("#scrim")){setDrawer(false);if(needClose)router();return}
  const go=t.closest("[data-go]");if(go){const h2="#/"+go.dataset.go;if(location.hash===h2)router();else location.hash=h2;return}
- const nv=t.closest("nav button");if(nv){const h2="#/"+nv.dataset.v;if(location.hash===h2)router();else location.hash=h2;return}
+ const nv=t.closest("nav button");if(nv){setDrawer(false);const h2="#/"+nv.dataset.v;if(location.hash===h2)router();else location.hash=h2;return}
  const cyc=t.closest("[data-cyc]");if(cyc){const r=LEDGER.find(x=>rowId(x)===cyc.dataset.cyc);if(r)cycle(r);return}
  const tac=t.closest("[data-tglac]");if(tac){const id=tac.dataset.tglac;if(openAC.has(id))openAC.delete(id);else openAC.add(id);router();return}
  const tsc=t.closest("[data-tglsac]");if(tsc){const id=tsc.dataset.tglsac;if(openSAC.has(id))openSAC.delete(id);else openSAC.add(id);router();return}
@@ -1133,6 +1171,7 @@ document.addEventListener("change",ev=>{
  const tq=t.closest("[data-toolq]");if(tq){toolQ=tq.value;router();return}
 });
 document.addEventListener("keydown",ev=>{
+ if(ev.key==="Escape"&&drawerOpen()){setDrawer(false);return}
  if(ev.key!=="Enter")return;
  const id=ev.target&&ev.target.id;
  if(id==="nm-ac"||id==="cd-ac"){ev.preventDefault();addChannel("ac",null)}
